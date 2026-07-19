@@ -63,12 +63,12 @@
         </div>
         {{ if $hasAudio }}
         <div class="song-list__audio-panel" id="audio-{{ $slug }}" hidden>
-          <audio class="song-list__audio" controls preload="none" src="/audio/{{ $slug }}.mp3"></audio>
+          <audio class="song-list__audio" controls preload="metadata" src="/audio/{{ $slug }}.mp3"></audio>
         </div>
         {{ end }}
         {{ range $i, $r := $recordings }}
         <div class="song-list__audio-panel" id="audio-{{ $slug }}-{{ $i }}" hidden>
-          <audio class="song-list__audio" controls preload="none" src="{{ $r.url }}"></audio>
+          <audio class="song-list__audio" controls preload="metadata" src="{{ $r.url }}"></audio>
         </div>
         {{ end }}
       </li>
