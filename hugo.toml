@@ -1,6 +1,7 @@
 baseURL = "https://www.afterschoolspecial.band/"
 languageCode = "en-us"
 title = "After School Special"
+buildFuture = true
 
 [params]
   tagline = "A teachers' band, playing since the 90s"
