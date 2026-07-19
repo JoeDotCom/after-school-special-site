@@ -122,10 +122,26 @@
 {{ end }}
 
 <section class="prose-section">
+  <h2 class="prose-section__heading">About Us</h2>
   {{ .Content }}
 </section>
 
 {{ if $tracks }}
 {{ partial "player.html" . }}
 {{ end }}
+{{ end }}
+
+{{ define "structured_data" }}
+{{ $ld := dict
+  "@context" "https://schema.org"
+  "@type" "MusicGroup"
+  "name" "After School Special"
+  "alternateName" "After School Special Band"
+  "description" .Site.Params.tagline
+  "url" .Site.BaseURL
+  "image" ("images/hero-banner.jpg" | absURL)
+  "genre" (slice "Classic Rock" "Cover Band" "Blues")
+  "sameAs" (slice .Site.Params.facebook .Site.Params.instagram .Site.Params.youtube)
+}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
 {{ end }}

@@ -1,6 +1,6 @@
 ---
 title: "Joe"
-photo: "/images/joe.png"
+photo: "/images/joe.jpg"
 instrument: "Sound, Tech & Recording (occasional percussion)"
 weight: 60
 ---

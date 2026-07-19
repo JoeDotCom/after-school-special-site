@@ -1,6 +1,7 @@
 ---
 title: "Photos"
 layout: "photos"
+description: "Photos from After School Special's live shows and gigs around the Chicago area."
 photos:
   - "/images/promo-mickey-finns.jpg"
 ---

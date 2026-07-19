@@ -9,3 +9,22 @@
   {{ with .Params.ticket_link }}<a class="gig-card__tickets" href="{{ . }}">Tickets / Info</a>{{ end }}
 </article>
 {{ end }}
+
+{{ define "structured_data" }}
+{{ $location := dict "@type" "Place" "name" .Params.venue }}
+{{ with .Params.address }}{{ $location = merge $location (dict "address" .) }}{{ end }}
+
+{{ $ld := dict
+  "@context" "https://schema.org"
+  "@type" "MusicEvent"
+  "name" (printf "After School Special at %s" .Params.venue)
+  "startDate" (.Date.Format "2006-01-02")
+  "eventStatus" "https://schema.org/EventScheduled"
+  "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+  "location" $location
+  "performer" (dict "@type" "MusicGroup" "name" "After School Special")
+  "url" .Permalink
+}}
+{{ with .Params.venue_link }}{{ $ld = merge $ld (dict "sameAs" .) }}{{ end }}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+{{ end }}

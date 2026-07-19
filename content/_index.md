@@ -1,6 +1,7 @@
 ---
 title: "After School Special"
 hero_image: "/images/hero-banner.jpg"
+description: "A Chicago-area teachers' cover band playing classic rock, blues, and more since the 1990s. See upcoming shows, hear live recordings, and book us for your next event."
 ---
 
 After School Special band is all about teachers. We started playing together in

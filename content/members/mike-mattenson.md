@@ -1,6 +1,6 @@
 ---
 title: "Mike Mattenson"
-photo: "/images/mike.png"
+photo: "/images/mike.jpg"
 instrument: "Bass"
 weight: 40
 ---

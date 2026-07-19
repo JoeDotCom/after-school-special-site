@@ -1,6 +1,7 @@
 ---
 title: "Contact Us"
 email: "TBD"
+description: "Contact After School Special to book a private party, fundraiser, or bar gig in the Chicago area."
 ---
 
 Please contact us on our socials for booking info.

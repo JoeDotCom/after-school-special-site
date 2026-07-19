@@ -3,8 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
-  <meta name="description" content="{{ .Site.Params.tagline }}">
+
+  {{ $desc := .Site.Params.tagline }}
+  {{ if .Params.description }}
+    {{ $desc = .Params.description }}
+  {{ else if and (not .IsHome) .Content }}
+    {{ $plain := .Summary | plainify }}
+    {{ if $plain }}{{ $desc = $plain | truncate 160 }}{{ end }}
+  {{ end }}
+
+  {{ $pageTitle := .Site.Title }}
+  {{ if not .IsHome }}{{ $pageTitle = printf "%s | %s" .Title .Site.Title }}{{ end }}
+
+  {{ $ogImage := "images/hero-banner.jpg" }}
+  {{ if .Params.photo }}{{ $ogImage = strings.TrimPrefix "/" .Params.photo }}{{ end }}
+
+  <title>{{ $pageTitle }}</title>
+  <meta name="description" content="{{ $desc }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="theme-color" content="#1a3230">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  <meta property="og:description" content="{{ $desc }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ $ogImage | absURL }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{ $desc }}">
+  <meta name="twitter:image" content="{{ $ogImage | absURL }}">
+
   <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "images/favicon-16x16.png" | relURL }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon-32x32.png" | relURL }}">
@@ -14,6 +46,8 @@
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  {{ block "structured_data" . }}{{ end }}
 </head>
 <body>
   {{ partial "header.html" . }}

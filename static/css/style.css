@@ -280,6 +280,12 @@ img { max-width: 100%; display: block; }
   padding: 1rem 1.25rem 3rem;
 }
 .prose-section p { margin: 0 0 1em; }
+.prose-section__heading {
+  font-family: 'Kalam', cursive;
+  font-size: 1.4rem;
+  color: var(--marker-red);
+  margin: 0 0 0.75rem;
+}
 .prose-section li img {
   vertical-align: middle;
   margin-left: 0.4em;
