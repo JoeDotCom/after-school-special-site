@@ -284,10 +284,7 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--line);
 }
 .song-list__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem;
+  line-height: 1.5;
 }
 .song-list__artist { opacity: 0.85; }
 .song-list__note { font-style: italic; opacity: 0.75; }
