@@ -8,7 +8,7 @@
 
 <div class="gig-list">
   {{ range .Pages.ByParam "date" }}
-  <article class="gig-card">
+  <article class="gig-card{{ if .Date.Before now }} gig-card--past{{ end }}">
     <div class="gig-card__date">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.time }} &middot; {{ . }}{{ end }}</div>
     <div class="gig-card__body">
       <h2>

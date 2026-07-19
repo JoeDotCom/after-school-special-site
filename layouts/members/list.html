@@ -6,7 +6,7 @@
   {{ range .Pages.ByParam "weight" }}
   <article class="member-card">
     {{ if .Params.photo }}
-    <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" class="member-card__photo">
+    <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" class="member-card__photo" style="object-position: {{ .Params.photo_position | default "center" }};">
     {{ else }}
     <div class="member-card__photo member-card__photo--placeholder" aria-hidden="true"></div>
     {{ end }}

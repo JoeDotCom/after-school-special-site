@@ -7,13 +7,18 @@
 </section>
 
 {{ $gigs := where .Site.RegularPages "Section" "gigs" }}
-{{ $upcoming := where $gigs "Date" ">=" now }}
+{{ $cutoff := now.AddDate 0 0 -3 }}
+{{ $upcoming := where $gigs "Date" ">=" $cutoff }}
 {{ $upcoming = $upcoming.ByDate | first 3 }}
 {{ if $upcoming }}
 <div class="hall-pass">
   {{ range $i, $show := $upcoming }}
-  <div class="hall-pass__card">
-    <p class="hall-pass__eyebrow">{{ if eq $i 0 }}Come see our next show!{{ else }}Also playing{{ end }}</p>
+  <div class="hall-pass__card{{ if $show.Date.Before now }} hall-pass__card--past{{ end }}">
+    <p class="hall-pass__eyebrow">
+      {{ if $show.Date.Before now }}We just played:
+      {{ else if eq $i 0 }}Come see our next show!
+      {{ else }}Also playing{{ end }}
+    </p>
     <p class="hall-pass__line">
       <strong>When:</strong> {{ $show.Date.Format "Jan 2, 2006" }}{{ with $show.Params.time }} &middot; {{ . }}{{ end }}
     </p>

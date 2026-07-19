@@ -198,6 +198,8 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
 }
 .hall-pass__line { margin: 0.2rem 0; }
+.hall-pass__card--past { opacity: 0.8; }
+.hall-pass__card--past .hall-pass__eyebrow { color: var(--chalkboard); }
 
 /* ---- Generic sections ---- */
 .page-header {
@@ -274,6 +276,11 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 560px) {
   .gig-card { flex-direction: column; gap: 0.4rem; }
+}
+.gig-card--past {
+  opacity: 0.55;
+  filter: grayscale(60%);
+  border-left-color: var(--line);
 }
 
 /* ---- Photos ---- */

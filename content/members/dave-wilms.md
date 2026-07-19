@@ -1,6 +1,7 @@
 ---
 title: "Dave Wilms"
 photo: "/images/dave.jpg"
+photo_position: "center top"
 instrument: "Guitar & bass"
 weight: 20
 ---
