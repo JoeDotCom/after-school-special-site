@@ -3,10 +3,10 @@ title: "After School Special"
 hero_image: "/images/hero-banner.jpg"
 next_show:
   active: true
-  date: "May 3rd, 9pm"
-  venue: "Mickey Finns"
-  address: "345 N Milwaukee Ave, Libertyville"
-  venue_link: "https://www.mickeyfinnsbrewery.com/"
+  date: "July 31st, 7pm"
+  venue: "Prarie House"
+  address: "2710 N Main St Buffalo Grove, IL"
+  venue_link: "https://prairiehousetavern.com/"
 ---
 
 After School Special band is all about teachers. We started playing together in
