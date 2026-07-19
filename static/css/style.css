@@ -211,21 +211,33 @@ img { max-width: 100%; display: block; }
 .hall-pass__line { margin: 0.2rem 0; }
 .hall-pass__card--past { opacity: 0.8; }
 .hall-pass__card--past .hall-pass__eyebrow { color: var(--chalkboard); }
-
-/* ---- Homepage "see more" links ---- */
-.home-link {
-  max-width: 800px;
-  margin: 0.9rem auto 0;
-  padding: 0 1.25rem;
-}
-.home-link a {
-  font-weight: 600;
-  color: var(--marker-red);
-}
-.home-link--shows {
+.hall-pass__card--cta {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   text-align: center;
-  margin-top: 0.6rem;
+  background: var(--paper-dark);
+  transition: transform 0.15s ease;
 }
+.hall-pass__card--cta .hall-pass__line {
+  font-family: 'Kalam', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--marker-red);
+  margin: 0;
+}
+.hall-pass__card--cta:hover { transform: rotate(-1.2deg) scale(1.03); }
+
+/* ---- Homepage "see more" CTAs ---- */
+.home-cta {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: var(--marker-red);
+  border-bottom: 2px dashed var(--marker-red);
+  padding-bottom: 0.1em;
+}
+.home-cta:hover { text-decoration: none; opacity: 0.8; }
 
 /* ---- Hear Us (homepage random tracks) ---- */
 .top-songs {
@@ -268,6 +280,21 @@ img { max-width: 100%; display: block; }
   transition: transform 0.15s ease;
 }
 .top-songs__play:hover { transform: scale(1.08); }
+.top-songs__card--cta {
+  text-decoration: none;
+  color: inherit;
+  border: 2px dashed var(--marker-red);
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.top-songs__card--cta:hover { background: var(--paper-dark); }
+.top-songs__play--cta {
+  background: transparent;
+  border: 2px solid var(--marker-red);
+  color: var(--marker-red);
+  font-size: 1.1rem;
+}
+.top-songs__card--cta .top-songs__title { color: var(--marker-red); }
 .top-songs__info { min-width: 0; }
 .top-songs__title {
   font-weight: 600;

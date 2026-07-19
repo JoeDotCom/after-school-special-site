@@ -29,8 +29,13 @@
     </p>
   </div>
   {{ end }}
+  {{ with .Site.GetPage "/gigs" }}
+  <a class="hall-pass__card hall-pass__card--cta" href="{{ .RelPermalink }}">
+    <p class="hall-pass__eyebrow">See every show</p>
+    <p class="hall-pass__line">All Shows &rarr;</p>
+  </a>
+  {{ end }}
 </div>
-{{ with .Site.GetPage "/gigs" }}<p class="home-link home-link--shows"><a href="{{ .RelPermalink }}">All Shows &rarr;</a></p>{{ end }}
 {{ end }}
 
 {{ $audioSlugs := slice }}
@@ -69,8 +74,17 @@
 {{ if $tracks }}
 <section class="top-songs">
   <h2 class="top-songs__heading">Hear Us</h2>
-  <div class="top-songs__grid" id="top-songs-grid"></div>
-  {{ with .Site.GetPage "/songlist" }}<p class="home-link home-link--music"><a href="{{ .RelPermalink }}">Hear More &rarr;</a></p>{{ end }}
+  <div class="top-songs__grid" id="top-songs-grid">
+    {{ with .Site.GetPage "/songlist" }}
+    <a class="top-songs__card top-songs__card--cta" href="{{ .RelPermalink }}">
+      <span class="top-songs__play top-songs__play--cta" aria-hidden="true">&#9835;</span>
+      <span class="top-songs__info">
+        <span class="top-songs__title">Hear More</span>
+        <span class="top-songs__subtitle">Browse the full song list</span>
+      </span>
+    </a>
+    {{ end }}
+  </div>
 </section>
 <script type="application/json" id="track-data">{{ $tracks | jsonify | safeJS }}</script>
 <script>
@@ -78,6 +92,7 @@
   var dataEl = document.getElementById('track-data');
   var grid = document.getElementById('top-songs-grid');
   if (!dataEl || !grid) return;
+  var ctaCard = grid.querySelector('.top-songs__card--cta');
   var tracks = JSON.parse(dataEl.textContent || '[]');
   if (!tracks.length) return;
 
@@ -117,7 +132,7 @@
 
     card.appendChild(btn);
     card.appendChild(info);
-    grid.appendChild(card);
+    grid.insertBefore(card, ctaCard || null);
   });
 })();
 </script>
@@ -126,7 +141,7 @@
 <section class="prose-section">
   <h2 class="prose-section__heading">About Us</h2>
   {{ .Content }}
-  {{ with .Site.GetPage "/members" }}<p class="home-link home-link--members"><a href="{{ .RelPermalink }}">Meet the Band &rarr;</a></p>{{ end }}
+  {{ with .Site.GetPage "/members" }}<a class="home-cta" href="{{ .RelPermalink }}">Meet the Band &rarr;</a>{{ end }}
 </section>
 
 {{ if $tracks }}

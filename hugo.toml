@@ -3,6 +3,12 @@ languageCode = "en-us"
 title = "After School Special"
 buildFuture = true
 
+[permalinks]
+  [permalinks.page]
+    gigs = "/shows/:slug/"
+  [permalinks.section]
+    gigs = "/shows/"
+
 [params]
   tagline = "A teachers' band, playing since the 90s"
   facebook = "https://www.facebook.com/afterschoolspecial101"
@@ -26,7 +32,7 @@ buildFuture = true
 
 [[menu.main]]
   name = "Shows"
-  url = "/gigs/"
+  url = "/shows/"
   weight = 4
 
 [[menu.main]]
