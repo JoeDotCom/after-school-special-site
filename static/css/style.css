@@ -151,6 +151,12 @@ img { max-width: 100%; display: block; }
     min-height: 0;
     aspect-ratio: 2 / 1;
   }
+  .hero__overlay {
+    padding-bottom: 3.5rem;
+  }
+  .hall-pass {
+    margin-top: -0.5rem;
+  }
 }
 .hero__overlay {
   width: 100%;
