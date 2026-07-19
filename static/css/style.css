@@ -132,6 +132,15 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: flex-end;
 }
+@media (min-aspect-ratio: 2/1) {
+  /* Wide, short viewports (ultrawide monitors, resized browser windows)
+     force cover-cropping hard on the vertical axis. Scale min-height off
+     width instead of viewport height so the crop stays gentle enough to
+     keep everyone's heads in frame. */
+  .hero {
+    min-height: 34vw;
+  }
+}
 .hero__overlay {
   width: 100%;
   background: linear-gradient(to top, rgba(26,50,48,0.92), rgba(26,50,48,0.15));
