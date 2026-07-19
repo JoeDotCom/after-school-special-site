@@ -4,9 +4,9 @@ title = "After School Special"
 
 [params]
   tagline = "A teachers' band, playing since the 90s"
-  facebook = "https://www.facebook.com/"
-  instagram = "https://www.instagram.com/"
-  youtube = "https://www.youtube.com/"
+  facebook = "https://www.facebook.com/afterschoolspecial101"
+  instagram = "https://www.instagram.com/afterschoolspecialband125/"
+  youtube = "https://www.youtube.com/@AfterSchoolSpecialBand"
 
 [[menu.main]]
   name = "Home"

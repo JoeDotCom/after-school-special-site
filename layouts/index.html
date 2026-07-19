@@ -6,20 +6,24 @@
   </div>
 </section>
 
-{{ with .Params.next_show }}
-{{ if .active }}
+{{ $upcoming := where .Site.RegularPages "Section" "gigs" "Date" ">=" now }}
+{{ $upcoming = $upcoming.ByDate | first 3 }}
+{{ if $upcoming }}
 <div class="hall-pass">
+  {{ range $i, $show := $upcoming }}
   <div class="hall-pass__card">
-    <p class="hall-pass__eyebrow">Come see our next show!</p>
-    <p class="hall-pass__line"><strong>When:</strong> {{ .date }}</p>
+    <p class="hall-pass__eyebrow">{{ if eq $i 0 }}Come see our next show!{{ else }}Also playing{{ end }}</p>
+    <p class="hall-pass__line">
+      <strong>When:</strong> {{ $show.Date.Format "Jan 2, 2006" }}{{ with $show.Params.time }} &middot; {{ . }}{{ end }}
+    </p>
     <p class="hall-pass__line">
       <strong>Where:</strong>
-      {{ if .venue_link }}<a href="{{ .venue_link }}">{{ .venue }}</a>{{ else }}{{ .venue }}{{ end }}
-      &mdash; {{ .address }}
+      {{ if $show.Params.venue_link }}<a href="{{ $show.Params.venue_link }}">{{ $show.Params.venue }}</a>{{ else }}{{ $show.Params.venue }}{{ end }}
+      {{ with $show.Params.address }}&mdash; {{ . }}{{ end }}
     </p>
   </div>
+  {{ end }}
 </div>
-{{ end }}
 {{ end }}
 
 <section class="prose-section">

@@ -126,7 +126,7 @@ img { max-width: 100%; display: block; }
 /* ---- Hero ---- */
 .hero {
   background-size: cover;
-  background-position: center;
+  background-position: center 33%;
   position: relative;
   min-height: 46vh;
   display: flex;
@@ -152,7 +152,9 @@ img { max-width: 100%; display: block; }
 /* ---- Hall pass (signature element) ---- */
 .hall-pass {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   margin: -2.2rem 0 2.5rem;
   padding: 0 1.25rem;
   position: relative;
