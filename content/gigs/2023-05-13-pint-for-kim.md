@@ -3,6 +3,7 @@ title: "A Pint For Kim Blood Drive & Life Saving Celebration"
 date: 2023-05-13
 time: "12:00-1:30 PM"
 venue: "A Pint For Kim Blood Drive & Life Saving Celebration"
+venue_link: "https://apintforkim.com/"
 ---
 
 <!-- No year was given for "Saturday, May 13" -- 2023 used based on where

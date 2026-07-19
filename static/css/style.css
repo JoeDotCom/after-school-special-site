@@ -312,14 +312,7 @@ img { max-width: 100%; display: block; }
   transition: opacity 0.15s ease;
 }
 .song-list__yt:hover img { opacity: 1; }
-.song-list__audio {
-  display: block;
-  width: 100%;
-  max-width: 360px;
-  height: 32px;
-  margin-top: 0.4rem;
-}
-.song-list__audio-toggle {
+.song-list__play {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -331,23 +324,69 @@ img { max-width: 100%; display: block; }
   border-radius: 50%;
   background: var(--marker-yellow);
   color: var(--chalkboard);
-  font-size: 0.85rem;
+  font-size: 0.65rem;
   line-height: 1;
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.15s ease, transform 0.15s ease;
   vertical-align: middle;
 }
-.song-list__audio-toggle:hover { opacity: 1; }
-.song-list__audio-toggle[aria-expanded="true"] {
-  background: var(--marker-red);
+.song-list__play:hover { opacity: 1; transform: scale(1.08); }
+
+/* ---- Now-playing bar (sticky bottom player) ---- */
+.now-playing {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--chalkboard-dark);
   color: var(--paper);
-  transform: scale(1.05);
+  padding: 0.6rem 1rem;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
 }
-.song-list__audio-panel {
-  margin-top: 0.4rem;
+.now-playing[hidden] { display: none; }
+.now-playing__toggle,
+.now-playing__close {
+  flex: 0 0 auto;
+  border: none;
+  background: none;
+  color: var(--paper);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
 }
-.song-list__audio-panel[hidden] { display: none; }
+.now-playing__close { font-size: 1.4rem; line-height: 1; }
+.now-playing__info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.now-playing__title {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.now-playing__seek {
+  width: 100%;
+  cursor: pointer;
+}
+.now-playing__time {
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+body:has(.now-playing:not([hidden])) {
+  padding-bottom: 4.5rem;
+}
+@media (max-width: 560px) {
+  .now-playing__time { display: none; }
+}
 
 /* ---- Gigs / shows ---- */
 .gig-list {
