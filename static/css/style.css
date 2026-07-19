@@ -480,6 +480,7 @@ body:has(.now-playing:not([hidden])) {
 }
 @media (max-width: 560px) {
   .gig-card { flex-direction: column; gap: 0.4rem; }
+  .gig-card__date { flex-basis: auto; }
 }
 .gig-card--past {
   opacity: 0.55;
