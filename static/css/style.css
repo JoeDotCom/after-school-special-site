@@ -126,7 +126,7 @@ img { max-width: 100%; display: block; }
 /* ---- Hero ---- */
 .hero {
   background-size: cover;
-  background-position: center 33%;
+  background-position: center top;
   position: relative;
   min-height: 46vh;
   display: flex;
@@ -216,27 +216,36 @@ img { max-width: 100%; display: block; }
 
 /* ---- Members ---- */
 .member-grid {
-  max-width: 1100px;
+  max-width: 800px;
   margin: 1.5rem auto 3rem;
   padding: 0 1.25rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.75rem;
 }
 .member-card {
+  display: flex;
+  gap: 1.25rem;
   background: var(--paper-dark);
   border-radius: 6px;
   overflow: hidden;
 }
 .member-card__photo {
-  width: 100%;
-  aspect-ratio: 3 / 2;
+  width: 180px;
+  height: 180px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  flex-shrink: 0;
 }
 .member-card__photo--placeholder {
   background: repeating-linear-gradient(45deg, var(--line), var(--line) 10px, transparent 10px, transparent 20px);
 }
-.member-card__body { padding: 1rem 1.25rem 1.4rem; }
+.member-card__body { padding: 1rem 1.25rem 1.4rem 0; }
+@media (max-width: 560px) {
+  .member-card { flex-direction: column; }
+  .member-card__photo { width: 100%; height: auto; }
+  .member-card__body { padding: 0 1.25rem 1.4rem; }
+}
 .member-card__instrument {
   font-style: italic;
   color: var(--marker-red);
