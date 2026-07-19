@@ -1,7 +1,7 @@
 ---
 title: "Lindsay Jurjovec"
 photo: "/images/lindsay.webp"
-instrument: ""
+instrument: "Vocals"
 weight: 50
 ---
 
