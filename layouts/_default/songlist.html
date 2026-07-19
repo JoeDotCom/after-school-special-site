@@ -53,10 +53,10 @@
           </a>
           {{ end }}
           {{ if $hasAudio }}
-          <button type="button" class="song-list__play" data-src="/audio/{{ $slug }}.mp3" data-title="{{ .title }}{{ if .artist }} — {{ .artist }}{{ end }}" aria-label="Play recording of {{ .title }}" title="Play recording">&#9654;</button>
+          <button type="button" class="song-list__play js-play-track" data-src="/audio/{{ $slug }}.mp3" data-title="{{ .title }}{{ if .artist }} — {{ .artist }}{{ end }}" aria-label="Play recording of {{ .title }}" title="Play recording">&#9654;</button>
           {{ end }}
           {{ range $r := $recordings }}
-          <button type="button" class="song-list__play" data-src="{{ $r.url }}" data-title="{{ $songTitle }} — Live at {{ $r.gig }}" aria-label="Play recording of {{ $songTitle }} from {{ $r.gig }}" title="Live at {{ $r.gig }} &middot; {{ (time.AsTime $r.date).Format "Jan 2, 2006" }}">&#9654;</button>
+          <button type="button" class="song-list__play js-play-track" data-src="{{ $r.url }}" data-title="{{ $songTitle }} — Live at {{ $r.gig }}" aria-label="Play recording of {{ $songTitle }} from {{ $r.gig }}" title="Live at {{ $r.gig }} &middot; {{ (time.AsTime $r.date).Format "Jan 2, 2006" }}">&#9654;</button>
           {{ end }}
         </div>
       </li>
@@ -66,78 +66,5 @@
   {{ end }}
 </div>
 
-<div class="now-playing" id="now-playing" hidden>
-  <button type="button" class="now-playing__toggle" id="now-playing-toggle" aria-label="Play or pause">&#9654;</button>
-  <div class="now-playing__info">
-    <div class="now-playing__title" id="now-playing-title"></div>
-    <input type="range" class="now-playing__seek" id="now-playing-seek" min="0" max="0" step="1" value="0">
-  </div>
-  <div class="now-playing__time" id="now-playing-time">0:00 / 0:00</div>
-  <button type="button" class="now-playing__close" id="now-playing-close" aria-label="Close player">&times;</button>
-  <audio id="now-playing-audio" preload="metadata"></audio>
-</div>
-
-<script>
-(function () {
-  var bar = document.getElementById('now-playing');
-  var audio = document.getElementById('now-playing-audio');
-  var titleEl = document.getElementById('now-playing-title');
-  var seek = document.getElementById('now-playing-seek');
-  var timeEl = document.getElementById('now-playing-time');
-  var toggleBtn = document.getElementById('now-playing-toggle');
-  var closeBtn = document.getElementById('now-playing-close');
-
-  function fmt(t) {
-    if (!isFinite(t) || t < 0) return '0:00';
-    var m = Math.floor(t / 60);
-    var s = Math.floor(t % 60);
-    return m + ':' + (s < 10 ? '0' : '') + s;
-  }
-
-  document.querySelectorAll('.song-list__play').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var src = btn.dataset.src;
-      var isSameTrack = audio.currentSrc && audio.currentSrc.indexOf(src) !== -1;
-      if (!isSameTrack) {
-        audio.src = src;
-      }
-      titleEl.textContent = btn.dataset.title;
-      bar.removeAttribute('hidden');
-      audio.play();
-    });
-  });
-
-  toggleBtn.addEventListener('click', function () {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  });
-
-  audio.addEventListener('play', function () { toggleBtn.innerHTML = '&#10074;&#10074;'; });
-  audio.addEventListener('pause', function () { toggleBtn.innerHTML = '&#9654;'; });
-
-  audio.addEventListener('loadedmetadata', function () {
-    seek.max = Math.floor(audio.duration) || 0;
-  });
-
-  audio.addEventListener('timeupdate', function () {
-    if (document.activeElement !== seek) {
-      seek.value = Math.floor(audio.currentTime);
-    }
-    timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
-  });
-
-  seek.addEventListener('input', function () {
-    audio.currentTime = seek.value;
-  });
-
-  closeBtn.addEventListener('click', function () {
-    audio.pause();
-    audio.removeAttribute('src');
-    bar.setAttribute('hidden', '');
-  });
-})();
-</script>
+{{ partial "player.html" . }}
 {{ end }}

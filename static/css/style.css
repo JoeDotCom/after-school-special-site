@@ -212,6 +212,62 @@ img { max-width: 100%; display: block; }
 .hall-pass__card--past { opacity: 0.8; }
 .hall-pass__card--past .hall-pass__eyebrow { color: var(--chalkboard); }
 
+/* ---- Hear Us (homepage random tracks) ---- */
+.top-songs {
+  max-width: 800px;
+  margin: 0.5rem auto 0;
+  padding: 0 1.25rem;
+}
+.top-songs__heading {
+  font-family: 'Kalam', cursive;
+  font-size: 1.4rem;
+  color: var(--marker-red);
+  margin: 0 0 0.75rem;
+}
+.top-songs__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+}
+.top-songs__card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--paper-dark);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+.top-songs__play {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--marker-yellow);
+  color: var(--chalkboard);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.top-songs__play:hover { transform: scale(1.08); }
+.top-songs__info { min-width: 0; }
+.top-songs__title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-songs__subtitle {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ---- Generic sections ---- */
 .page-header {
   max-width: 800px;

@@ -32,7 +32,100 @@
 </div>
 {{ end }}
 
+{{ $audioSlugs := slice }}
+{{ $dirResult := try (readDir "static/audio") }}
+{{ with $dirResult }}
+  {{ if not .Err }}
+    {{ range .Value }}
+      {{ if and (not .IsDir) (eq (path.Ext .Name) ".mp3") }}
+        {{ $audioSlugs = $audioSlugs | append (path.BaseName .Name) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $tracks := slice }}
+{{ range .Site.Data.songlist.groups }}
+  {{ range .songs }}
+    {{ $songTitle := .title }}
+    {{ $artist := .artist }}
+    {{ $slug := anchorize .title }}
+    {{ if in $audioSlugs $slug }}
+      {{ $tracks = $tracks | append (dict "title" $songTitle "subtitle" $artist "url" (printf "/audio/%s.mp3" $slug)) }}
+    {{ end }}
+    {{ range $.Site.Data.recordings }}
+      {{ $gig := .gig }}
+      {{ $gigSlug := .slug }}
+      {{ range .songs }}
+        {{ if eq .title $songTitle }}
+          {{ $tracks = $tracks | append (dict "title" $songTitle "subtitle" (printf "Live at %s" $gig) "url" (printf "/audio/gigs/%s/%s" $gigSlug (replace .file " " "%20"))) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $tracks }}
+<section class="top-songs">
+  <h2 class="top-songs__heading">Hear Us</h2>
+  <div class="top-songs__grid" id="top-songs-grid"></div>
+</section>
+<script type="application/json" id="track-data">{{ $tracks | jsonify | safeJS }}</script>
+<script>
+(function () {
+  var dataEl = document.getElementById('track-data');
+  var grid = document.getElementById('top-songs-grid');
+  if (!dataEl || !grid) return;
+  var tracks = JSON.parse(dataEl.textContent || '[]');
+  if (!tracks.length) return;
+
+  for (var i = tracks.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = tracks[i];
+    tracks[i] = tracks[j];
+    tracks[j] = tmp;
+  }
+
+  tracks.slice(0, 3).forEach(function (t) {
+    var card = document.createElement('div');
+    card.className = 'top-songs__card';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'js-play-track top-songs__play';
+    btn.dataset.src = t.url;
+    btn.dataset.title = t.title + (t.subtitle ? ' — ' + t.subtitle : '');
+    btn.setAttribute('aria-label', 'Play ' + t.title);
+    btn.innerHTML = '&#9654;';
+
+    var info = document.createElement('div');
+    info.className = 'top-songs__info';
+
+    var titleEl = document.createElement('div');
+    titleEl.className = 'top-songs__title';
+    titleEl.textContent = t.title;
+    info.appendChild(titleEl);
+
+    if (t.subtitle) {
+      var subEl = document.createElement('div');
+      subEl.className = 'top-songs__subtitle';
+      subEl.textContent = t.subtitle;
+      info.appendChild(subEl);
+    }
+
+    card.appendChild(btn);
+    card.appendChild(info);
+    grid.appendChild(card);
+  });
+})();
+</script>
+{{ end }}
+
 <section class="prose-section">
   {{ .Content }}
 </section>
+
+{{ if $tracks }}
+{{ partial "player.html" . }}
+{{ end }}
 {{ end }}
