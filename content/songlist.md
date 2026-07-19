@@ -10,7 +10,7 @@ We've been collecting songs since the '90s, so the list has grown into a mix of 
 - Back in the U.S.S.R. — Beatles
 - Because the Night — Patti Smith
 - Bertha — Grateful Dead
-- Burning Love — Elvis Presley
+- Burning Love — Elvis Presley [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/Z6NAQKsaR9c)
 - Come Together — Beatles
 - Dancing in the Street — Van Halen
 - Daydream Believer — Monkees
@@ -36,7 +36,7 @@ We've been collecting songs since the '90s, so the list has grown into a mix of 
 - Whole Lotta Love — Led Zeppelin
 - With a Little Help From My Friends — Joe Cocker
 - Wonderful Tonight — Eric Clapton
-- You Shook Me All Night Long — AC/DC
+- You Shook Me All Night Long — AC/DC [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/McFR3lAw_ck)
 - You Wreck Me — Tom Petty
 
 ## Blues & Soul
@@ -49,7 +49,7 @@ We've been collecting songs since the '90s, so the list has grown into a mix of 
 - Lean on Me — Bill Withers
 - Messin' With the Kid — Buddy Guy
 - Mustang Sally — Buddy Guy
-- Pride and Joy — Stevie Ray Vaughan
+- Pride and Joy — Stevie Ray Vaughan [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/FyL4TNYnEZM)
 - S.O.B. — Nathaniel Rateliff
 
 ## Reggae Grooves
@@ -70,14 +70,14 @@ We've been collecting songs since the '90s, so the list has grown into a mix of 
 - Jolene — Miley Cyrus
 - Me and Bobby McGee — Janis Joplin
 - Tennessee Whiskey — Chris Stapleton
-- The Story — Brandi Carlile
+- The Story — Brandi Carlile [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/aLKjOCqqzoM)
 - Up on Cripple Creek — The Band
 
 ## '90s & Alternative
 
-- Creep — Radiohead
+- Creep — Radiohead [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/fUhOb3bbIzo)
 - Go Your Own Way — Cranberries
-- Just a Girl — No Doubt
+- Just a Girl — No Doubt [![Watch on YouTube](/images/youtube-icon.svg)](https://youtu.be/EL2TA7bYHJQ)
 - Mr. Jones — Counting Crows
 - No Rain — Blind Melon
 - The Middle — Jimmy Eat World

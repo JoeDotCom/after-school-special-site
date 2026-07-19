@@ -213,6 +213,13 @@ img { max-width: 100%; display: block; }
   padding: 1rem 1.25rem 3rem;
 }
 .prose-section p { margin: 0 0 1em; }
+.prose-section li img {
+  vertical-align: middle;
+  margin-left: 0.4em;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+.prose-section li a:hover img { opacity: 1; }
 
 /* ---- Members ---- */
 .member-grid {
