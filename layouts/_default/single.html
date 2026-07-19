@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="prose-section">
+  {{ .Content }}
+
+  {{ if .Params.photos }}
+  <div class="photo-grid">
+    {{ range .Params.photos }}
+    <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if .Params.email }}
+  <p class="contact-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
+  {{ end }}
+</section>
+{{ end }}

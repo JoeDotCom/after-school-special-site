@@ -1,0 +1,19 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ "/" | relURL }}">
+      <img src="{{ "images/logo.png" | relURL }}" alt="After School Special logo" class="site-brand__logo">
+      <span class="site-brand__name">After School Special</span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle__label" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </label>
+    <nav class="site-nav">
+      <ul>
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL | relURL }}"{{ if $.IsMenuCurrent "main" . }} class="is-active"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

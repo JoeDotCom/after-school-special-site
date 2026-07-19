@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="gig-single">
+  <div class="page-header">
+    <h1>{{ .Params.venue }}</h1>
+    <p>{{ .Date.Format "Monday, Jan 2, 2006" }}{{ with .Params.time }} &middot; {{ . }}{{ end }}</p>
+    {{ with .Params.address }}<p>{{ . }}</p>{{ end }}
+  </div>
+  <div class="prose-section">{{ .Content }}</div>
+  {{ with .Params.ticket_link }}<a class="gig-card__tickets" href="{{ . }}">Tickets / Info</a>{{ end }}
+</article>
+{{ end }}

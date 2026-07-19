@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="hero" style="background-image: url('{{ .Params.hero_image | relURL }}');">
+  <div class="hero__overlay">
+    <h1 class="hero__title">After School Special</h1>
+    <p class="hero__tagline">{{ .Site.Params.tagline }}</p>
+  </div>
+</section>
+
+{{ with .Params.next_show }}
+{{ if .active }}
+<div class="hall-pass">
+  <div class="hall-pass__card">
+    <p class="hall-pass__eyebrow">Come see our next show!</p>
+    <p class="hall-pass__line"><strong>When:</strong> {{ .date }}</p>
+    <p class="hall-pass__line">
+      <strong>Where:</strong>
+      {{ if .venue_link }}<a href="{{ .venue_link }}">{{ .venue }}</a>{{ else }}{{ .venue }}{{ end }}
+      &mdash; {{ .address }}
+    </p>
+  </div>
+</div>
+{{ end }}
+{{ end }}
+
+<section class="prose-section">
+  {{ .Content }}
+</section>
+{{ end }}

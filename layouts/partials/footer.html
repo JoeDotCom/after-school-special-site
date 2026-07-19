@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>&copy; {{ now.Year }} After School Special</p>
+    <div class="social-links">
+      {{ with .Site.Params.facebook }}<a href="{{ . }}" aria-label="Facebook">Facebook</a>{{ end }}
+      {{ with .Site.Params.instagram }}<a href="{{ . }}" aria-label="Instagram">Instagram</a>{{ end }}
+      {{ with .Site.Params.youtube }}<a href="{{ . }}" aria-label="YouTube">YouTube</a>{{ end }}
+    </div>
+  </div>
+</footer>

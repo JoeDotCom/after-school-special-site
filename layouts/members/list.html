@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<div class="member-grid">
+  {{ range .Pages.ByParam "weight" }}
+  <article class="member-card">
+    {{ if .Params.photo }}
+    <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" class="member-card__photo">
+    {{ else }}
+    <div class="member-card__photo member-card__photo--placeholder" aria-hidden="true"></div>
+    {{ end }}
+    <div class="member-card__body">
+      <h2>{{ .Title }}</h2>
+      {{ if .Params.instrument }}<p class="member-card__instrument">{{ .Params.instrument }}</p>{{ end }}
+      {{ .Content }}
+    </div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}

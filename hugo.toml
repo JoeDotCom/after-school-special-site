@@ -1,0 +1,44 @@
+baseURL = "https://www.afterschoolspecial.band/"
+languageCode = "en-us"
+title = "After School Special"
+
+[params]
+  tagline = "A teachers' band, playing since the 90s"
+  facebook = "https://www.facebook.com/"
+  instagram = "https://www.instagram.com/"
+  youtube = "https://www.youtube.com/"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Members"
+  url = "/members/"
+  weight = 2
+
+[[menu.main]]
+  name = "Song List"
+  url = "/songlist/"
+  weight = 3
+
+[[menu.main]]
+  name = "Shows"
+  url = "/gigs/"
+  weight = 4
+
+[[menu.main]]
+  name = "Video"
+  url = "/video/"
+  weight = 5
+
+[[menu.main]]
+  name = "Photos"
+  url = "/photos/"
+  weight = 6
+
+[[menu.main]]
+  name = "Contact Us"
+  url = "/contact/"
+  weight = 7

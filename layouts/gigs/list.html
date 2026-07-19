@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="prose-section">
+  {{ .Content }}
+</section>
+
+<div class="gig-list">
+  {{ range .Pages.ByParam "date" }}
+  <article class="gig-card">
+    <div class="gig-card__date">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.time }} &middot; {{ . }}{{ end }}</div>
+    <div class="gig-card__body">
+      <h2>
+        {{ if .Params.venue_link }}<a href="{{ .Params.venue_link }}">{{ .Params.venue }}</a>{{ else }}{{ .Params.venue }}{{ end }}
+      </h2>
+      {{ with .Params.address }}<p class="gig-card__address">{{ . }}</p>{{ end }}
+      {{ .Content }}
+      {{ with .Params.ticket_link }}<a class="gig-card__tickets" href="{{ . }}">Tickets / Info</a>{{ end }}
+    </div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}

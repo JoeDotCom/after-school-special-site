@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="member-single">
+  {{ if .Params.photo }}
+  <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" class="member-single__photo">
+  {{ end }}
+  <h1>{{ .Title }}</h1>
+  {{ if .Params.instrument }}<p class="member-card__instrument">{{ .Params.instrument }}</p>{{ end }}
+  <div class="prose-section">{{ .Content }}</div>
+</article>
+{{ end }}

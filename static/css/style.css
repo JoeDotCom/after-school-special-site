@@ -1,0 +1,295 @@
+/* ---- Design tokens ----
+   Palette:  chalkboard  #24413F   paper   #F6F1E4
+             marker-red  #C1432E   marker-yellow #E8B23D
+             ink         #22302C
+   Display face: 'Kalam' (handwriting) -- used for headings only, with restraint
+   Body face:    'Inter'
+   Signature element: the "hall pass" next-show card, styled like a permission
+   slip clipped to a corkboard -- a nod to the band's school-function roots.
+*/
+
+:root {
+  --chalkboard: #24413F;
+  --chalkboard-dark: #1a3230;
+  --paper: #F6F1E4;
+  --paper-dark: #EAE2CC;
+  --ink: #22302C;
+  --marker-red: #C1432E;
+  --marker-yellow: #E8B23D;
+  --line: rgba(34, 48, 44, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  color: var(--chalkboard);
+  line-height: 1.2;
+  margin: 0 0 0.4em;
+}
+
+a {
+  color: var(--marker-red);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+/* ---- Header / nav ---- */
+.site-header {
+  background: var(--chalkboard);
+  color: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--paper);
+}
+.site-brand__logo { height: 44px; width: auto; }
+.site-brand__name {
+  font-family: 'Kalam', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+.nav-toggle { display: none; }
+.nav-toggle__label {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+.nav-toggle__label span {
+  width: 24px;
+  height: 2px;
+  background: var(--paper);
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.site-nav a {
+  color: var(--paper);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover,
+.site-nav a.is-active {
+  border-bottom-color: var(--marker-yellow);
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .nav-toggle__label { display: flex; }
+  .site-nav {
+    flex-basis: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .site-nav ul { flex-direction: column; gap: 0; padding: 0.5rem 0; }
+  .nav-toggle:checked ~ .site-nav { max-height: 400px; }
+}
+
+/* ---- Hero ---- */
+.hero {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+}
+.hero__overlay {
+  width: 100%;
+  background: linear-gradient(to top, rgba(26,50,48,0.92), rgba(26,50,48,0.15));
+  color: var(--paper);
+  padding: 2.5rem 1.25rem 2rem;
+}
+.hero__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--paper);
+  margin: 0;
+}
+.hero__tagline {
+  margin: 0.3rem 0 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ---- Hall pass (signature element) ---- */
+.hall-pass {
+  display: flex;
+  justify-content: center;
+  margin: -2.2rem 0 2.5rem;
+  padding: 0 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+.hall-pass__card {
+  background: var(--paper);
+  border: 2px dashed var(--marker-red);
+  border-radius: 4px;
+  padding: 1.25rem 1.75rem;
+  max-width: 520px;
+  width: 100%;
+  transform: rotate(-1.2deg);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  position: relative;
+}
+.hall-pass__card::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(4deg);
+  width: 60px;
+  height: 22px;
+  background: rgba(232, 178, 61, 0.75);
+}
+.hall-pass__eyebrow {
+  font-family: 'Kalam', cursive;
+  font-size: 1.15rem;
+  color: var(--marker-red);
+  margin: 0.2rem 0 0.6rem;
+  font-weight: 700;
+}
+.hall-pass__line { margin: 0.2rem 0; }
+
+/* ---- Generic sections ---- */
+.page-header {
+  max-width: 800px;
+  margin: 2.5rem auto 0.5rem;
+  padding: 0 1.25rem;
+}
+.prose-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 3rem;
+}
+.prose-section p { margin: 0 0 1em; }
+
+/* ---- Members ---- */
+.member-grid {
+  max-width: 1100px;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+.member-card {
+  background: var(--paper-dark);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.member-card__photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+.member-card__photo--placeholder {
+  background: repeating-linear-gradient(45deg, var(--line), var(--line) 10px, transparent 10px, transparent 20px);
+}
+.member-card__body { padding: 1rem 1.25rem 1.4rem; }
+.member-card__instrument {
+  font-style: italic;
+  color: var(--marker-red);
+  margin: 0 0 0.6em;
+  font-size: 0.95rem;
+}
+.member-single { max-width: 700px; margin: 0 auto; padding: 2rem 1.25rem; }
+.member-single__photo { border-radius: 6px; margin-bottom: 1rem; max-height: 420px; object-fit: cover; width: 100%; }
+
+/* ---- Gigs / shows ---- */
+.gig-list {
+  max-width: 800px;
+  margin: 1rem auto 3rem;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.gig-card {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--paper-dark);
+  border-radius: 6px;
+  padding: 1.1rem 1.4rem;
+  border-left: 4px solid var(--marker-yellow);
+}
+.gig-card__date {
+  flex: 0 0 140px;
+  font-weight: 600;
+  color: var(--chalkboard);
+}
+.gig-card__address { margin: 0.2rem 0 0.5em; opacity: 0.85; }
+.gig-card__tickets {
+  display: inline-block;
+  margin-top: 0.4em;
+  font-weight: 600;
+}
+@media (max-width: 560px) {
+  .gig-card { flex-direction: column; gap: 0.4rem; }
+}
+
+/* ---- Photos ---- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.photo-grid img { border-radius: 6px; }
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--chalkboard-dark);
+  color: var(--paper);
+  margin-top: 2rem;
+}
+.site-footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.social-links { display: flex; gap: 1rem; }
+.social-links a { color: var(--paper); }
