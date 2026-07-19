@@ -288,7 +288,11 @@ img { max-width: 100%; display: block; }
 }
 .song-list__artist { opacity: 0.85; }
 .song-list__note { font-style: italic; opacity: 0.75; }
+.song-list__yt {
+  display: inline-block;
+}
 .song-list__yt img {
+  display: inline-block;
   width: 20px;
   height: 14px;
   vertical-align: middle;
@@ -303,6 +307,16 @@ img { max-width: 100%; display: block; }
   max-width: 360px;
   height: 32px;
   margin-top: 0.4rem;
+}
+.song-list__recording {
+  margin-top: 0.5rem;
+}
+.song-list__recording-label {
+  display: block;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--marker-red);
+  margin-bottom: 0.15rem;
 }
 
 /* ---- Gigs / shows ---- */

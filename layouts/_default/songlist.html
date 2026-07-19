@@ -25,8 +25,23 @@
     <h2>{{ .name }}</h2>
     <ul class="song-list">
       {{ range .songs }}
+      {{ $songTitle := .title }}
       {{ $slug := anchorize .title }}
       {{ $hasAudio := in $audioSlugs $slug }}
+
+      {{ $recordings := slice }}
+      {{ range $.Site.Data.recordings }}
+        {{ $gig := .gig }}
+        {{ $date := .date }}
+        {{ $gigSlug := .slug }}
+        {{ range .songs }}
+          {{ if eq .title $songTitle }}
+            {{ $recordings = $recordings | append (dict "gig" $gig "date" $date "url" (printf "/audio/gigs/%s/%s" $gigSlug (replace .file " " "%20"))) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $recordings = sort $recordings "date" "desc" }}
+
       <li class="song-list__item">
         <div class="song-list__row">
           <span class="song-list__title">{{ .title }}</span>
@@ -40,6 +55,12 @@
         </div>
         {{ if $hasAudio }}
         <audio class="song-list__audio" controls preload="none" src="/audio/{{ $slug }}.mp3"></audio>
+        {{ end }}
+        {{ range $recordings }}
+        <div class="song-list__recording">
+          <span class="song-list__recording-label">Live at {{ .gig }} &middot; {{ (time.AsTime .date).Format "Jan 2, 2006" }}</span>
+          <audio class="song-list__audio" controls preload="none" src="{{ .url }}"></audio>
+        </div>
         {{ end }}
       </li>
       {{ end }}
