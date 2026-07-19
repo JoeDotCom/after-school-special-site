@@ -308,16 +308,35 @@ img { max-width: 100%; display: block; }
   height: 32px;
   margin-top: 0.4rem;
 }
-.song-list__recording {
-  margin-top: 0.5rem;
-}
-.song-list__recording-label {
-  display: block;
+.song-list__audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.4em;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--marker-yellow);
+  color: var(--chalkboard);
   font-size: 0.85rem;
-  font-style: italic;
-  color: var(--marker-red);
-  margin-bottom: 0.15rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  vertical-align: middle;
 }
+.song-list__audio-toggle:hover { opacity: 1; }
+.song-list__audio-toggle[aria-expanded="true"] {
+  background: var(--marker-red);
+  color: var(--paper);
+  transform: scale(1.05);
+}
+.song-list__audio-panel {
+  margin-top: 0.4rem;
+}
+.song-list__audio-panel[hidden] { display: none; }
 
 /* ---- Gigs / shows ---- */
 .gig-list {

@@ -6,8 +6,16 @@
   {{ .Content }}
 </section>
 
+{{ $upcoming := where .Pages "Date" ">=" now }}
+{{ $upcoming = $upcoming.ByDate }}
+{{ $past := where .Pages "Date" "<" now }}
+{{ $past = $past.ByDate.Reverse }}
+{{ $ordered := slice }}
+{{ range $upcoming }}{{ $ordered = $ordered | append . }}{{ end }}
+{{ range $past }}{{ $ordered = $ordered | append . }}{{ end }}
+
 <div class="gig-list">
-  {{ range .Pages.ByParam "date" }}
+  {{ range $ordered }}
   <article class="gig-card{{ if .Date.Before now }} gig-card--past{{ end }}">
     <div class="gig-card__date">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.time }} &middot; {{ . }}{{ end }}</div>
     <div class="gig-card__body">

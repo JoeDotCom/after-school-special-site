@@ -52,14 +52,23 @@
             <img src="/images/youtube-icon.svg" alt="YouTube">
           </a>
           {{ end }}
+          {{ if $hasAudio }}
+          {{ $panelID := printf "audio-%s" $slug }}
+          <button type="button" class="song-list__audio-toggle" data-target="{{ $panelID }}" aria-expanded="false" aria-label="Play recording of {{ .title }}" title="Recording">&#9835;</button>
+          {{ end }}
+          {{ range $i, $r := $recordings }}
+          {{ $panelID := printf "audio-%s-%d" $slug $i }}
+          <button type="button" class="song-list__audio-toggle" data-target="{{ $panelID }}" aria-expanded="false" aria-label="Play recording of {{ $songTitle }} from {{ $r.gig }}" title="Live at {{ $r.gig }} &middot; {{ (time.AsTime $r.date).Format "Jan 2, 2006" }}">&#9835;</button>
+          {{ end }}
         </div>
         {{ if $hasAudio }}
-        <audio class="song-list__audio" controls preload="none" src="/audio/{{ $slug }}.mp3"></audio>
+        <div class="song-list__audio-panel" id="audio-{{ $slug }}" hidden>
+          <audio class="song-list__audio" controls preload="none" src="/audio/{{ $slug }}.mp3"></audio>
+        </div>
         {{ end }}
-        {{ range $recordings }}
-        <div class="song-list__recording">
-          <span class="song-list__recording-label">Live at {{ .gig }} &middot; {{ (time.AsTime .date).Format "Jan 2, 2006" }}</span>
-          <audio class="song-list__audio" controls preload="none" src="{{ .url }}"></audio>
+        {{ range $i, $r := $recordings }}
+        <div class="song-list__audio-panel" id="audio-{{ $slug }}-{{ $i }}" hidden>
+          <audio class="song-list__audio" controls preload="none" src="{{ $r.url }}"></audio>
         </div>
         {{ end }}
       </li>
@@ -68,4 +77,49 @@
   </section>
   {{ end }}
 </div>
+
+<script>
+(function () {
+  var toggles = document.querySelectorAll('.song-list__audio-toggle');
+  toggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.dataset.target);
+      if (!panel) return;
+      var opening = panel.hasAttribute('hidden');
+
+      // collapse every other panel first, so only one is open at a time
+      document.querySelectorAll('.song-list__audio-panel').forEach(function (p) {
+        if (p !== panel) {
+          p.setAttribute('hidden', '');
+          var a = p.querySelector('audio');
+          if (a) a.pause();
+        }
+      });
+      document.querySelectorAll('.song-list__audio-toggle').forEach(function (b) {
+        if (b !== btn) b.setAttribute('aria-expanded', 'false');
+      });
+
+      if (opening) {
+        panel.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        panel.setAttribute('hidden', '');
+        btn.setAttribute('aria-expanded', 'false');
+        var audio = panel.querySelector('audio');
+        if (audio) audio.pause();
+      }
+    });
+  });
+
+  // stop every other player as soon as one starts, regardless of panel state
+  var players = document.querySelectorAll('.song-list__audio');
+  players.forEach(function (audio) {
+    audio.addEventListener('play', function () {
+      players.forEach(function (other) {
+        if (other !== audio) other.pause();
+      });
+    });
+  });
+})();
+</script>
 {{ end }}
