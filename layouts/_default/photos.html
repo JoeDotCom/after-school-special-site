@@ -26,9 +26,49 @@
   {{ if $photos }}
   <div class="photo-grid">
     {{ range $photos }}
-    <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+    <button type="button" class="photo-grid__item">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+    </button>
     {{ end }}
+  </div>
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox__close" aria-label="Close">&times;</button>
+    <img class="lightbox__image" alt="">
   </div>
   {{ end }}
 </section>
+
+<script>
+(function () {
+  var lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+  var lightboxImg = lightbox.querySelector('.lightbox__image');
+  var closeBtn = lightbox.querySelector('.lightbox__close');
+
+  function open(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.removeAttribute('hidden');
+  }
+  function close() {
+    lightbox.setAttribute('hidden', '');
+    lightboxImg.src = '';
+  }
+
+  document.querySelectorAll('.photo-grid__item').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var img = btn.querySelector('img');
+      open(img.src, img.alt);
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
 {{ end }}
