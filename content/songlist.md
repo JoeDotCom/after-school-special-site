@@ -1,4 +1,4 @@
 ---
-title: "Song List"
+title: "Our Music"
 layout: "songlist"
 ---

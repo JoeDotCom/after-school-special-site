@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="prose-section">
+  {{ .Content }}
+
+  {{ $photos := slice }}
+  {{ range .Params.photos }}
+    {{ $photos = $photos | append . }}
+  {{ end }}
+
+  {{ $dirResult := try (readDir "static/images/photos") }}
+  {{ with $dirResult }}
+    {{ if not .Err }}
+      {{ $entries := sort .Value "Name" }}
+      {{ range $entries }}
+        {{ $ext := lower (path.Ext .Name) }}
+        {{ if and (not .IsDir) (in (slice ".jpg" ".jpeg" ".png" ".webp") $ext) }}
+          {{ $photos = $photos | append (printf "/images/photos/%s" .Name) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $photos }}
+  <div class="photo-grid">
+    {{ range $photos }}
+    <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+{{ end }}

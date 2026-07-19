@@ -141,6 +141,17 @@ img { max-width: 100%; display: block; }
     min-height: 34vw;
   }
 }
+@media (max-width: 600px) {
+  /* Narrow phone screens are the opposite problem: a tall, narrow box next
+     to a wide group photo forces cover to crop hard from the sides,
+     chopping off the band members on the edges. Match the box's aspect
+     ratio to the photo's own (roughly 2:1) so almost nothing gets cropped
+     on either axis. */
+  .hero {
+    min-height: 0;
+    aspect-ratio: 2 / 1;
+  }
+}
 .hero__overlay {
   width: 100%;
   background: linear-gradient(to top, rgba(26,50,48,0.92), rgba(26,50,48,0.15));

@@ -20,7 +20,7 @@ buildFuture = true
   weight = 2
 
 [[menu.main]]
-  name = "Song List"
+  name = "Our Music"
   url = "/songlist/"
   weight = 3
 
@@ -30,14 +30,9 @@ buildFuture = true
   weight = 4
 
 [[menu.main]]
-  name = "Video"
-  url = "/video/"
-  weight = 5
-
-[[menu.main]]
   name = "Photos"
   url = "/photos/"
-  weight = 6
+  weight = 5
 
 [[menu.main]]
   name = "Contact Us"
