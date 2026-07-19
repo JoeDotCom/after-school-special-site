@@ -102,5 +102,3 @@ We've been collecting songs since the '90s, so the list has grown into a mix of 
 - Rolling in the Deep — Adele
 - Sweet Child O' Mine — Sheryl Crow
 - Whatever Gets You Through the Night — Los Lonely Boys
-</content>
-</invoke>

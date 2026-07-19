@@ -6,7 +6,8 @@
   </div>
 </section>
 
-{{ $upcoming := where .Site.RegularPages "Section" "gigs" "Date" ">=" now }}
+{{ $gigs := where .Site.RegularPages "Section" "gigs" }}
+{{ $upcoming := where $gigs "Date" ">=" now }}
 {{ $upcoming = $upcoming.ByDate | first 3 }}
 {{ if $upcoming }}
 <div class="hall-pass">
