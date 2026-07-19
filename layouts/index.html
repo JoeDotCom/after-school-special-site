@@ -30,6 +30,7 @@
   </div>
   {{ end }}
 </div>
+{{ with .Site.GetPage "/gigs" }}<p class="home-link home-link--shows"><a href="{{ .RelPermalink }}">All Shows &rarr;</a></p>{{ end }}
 {{ end }}
 
 {{ $audioSlugs := slice }}
@@ -69,6 +70,7 @@
 <section class="top-songs">
   <h2 class="top-songs__heading">Hear Us</h2>
   <div class="top-songs__grid" id="top-songs-grid"></div>
+  {{ with .Site.GetPage "/songlist" }}<p class="home-link home-link--music"><a href="{{ .RelPermalink }}">Hear More &rarr;</a></p>{{ end }}
 </section>
 <script type="application/json" id="track-data">{{ $tracks | jsonify | safeJS }}</script>
 <script>
@@ -124,6 +126,7 @@
 <section class="prose-section">
   <h2 class="prose-section__heading">About Us</h2>
   {{ .Content }}
+  {{ with .Site.GetPage "/members" }}<p class="home-link home-link--members"><a href="{{ .RelPermalink }}">Meet the Band &rarr;</a></p>{{ end }}
 </section>
 
 {{ if $tracks }}
