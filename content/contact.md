@@ -1,10 +1,11 @@
 ---
 title: "Contact Us"
-email: ""
+email: "TBD"
 ---
 
-Please contact us on our socials for booking info. 
+Please contact us on our socials for booking info.
 
-Looking to book us for a school function, fundraiser, or private party? Reach
-out below -- especially if you're a nonprofit or school working with a tight
-budget, we'd love to help.
+[Facebook](https://www.facebook.com/afterschoolspecial101) &middot;
+[Instagram](https://www.instagram.com/afterschoolspecialband125/) &middot;
+[YouTube](https://www.youtube.com/@AfterSchoolSpecialBand)
+
