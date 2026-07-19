@@ -1,0 +1,179 @@
+intro: We've been collecting songs since the '90s, so the list has grown into a mix of classic rock, blues, soul, reggae, country, and whatever else feels good to play. We don't always stick to the original genre either — our version of "Take Me Home, Country Roads" leans reggae, and a few other songs get bent into different feels depending on the night.
+groups:
+- name: Classic Rock & British Invasion
+  songs:
+  - title: Ain't Too Proud to Beg
+    artist: Rolling Stones
+  - title: Back in the U.S.S.R.
+    artist: Beatles
+  - title: Because the Night
+    artist: Patti Smith
+  - title: Bertha
+    artist: Grateful Dead
+  - title: Burning Love
+    artist: Elvis Presley
+    youtube: https://youtu.be/Z6NAQKsaR9c
+  - title: Come Together
+    artist: Beatles
+  - title: Dancing in the Street
+    artist: Van Halen
+  - title: Daydream Believer
+    artist: Monkees
+  - title: Don't Let Me Down
+    artist: Beatles
+  - title: Funk 49
+    artist: James Gang
+  - title: Get Out of Denver
+    artist: Bob Seger (Live)
+  - title: Happy
+    artist: Rolling Stones
+  - title: Have You Ever Seen the Rain
+    artist: Creedence Clearwater Revival
+  - title: HELP!
+    artist: Beatles
+  - title: Honky Tonk Women
+    artist: Rolling Stones
+  - title: I Saw Her Standing There
+    artist: Beatles
+  - title: It's All Over Now
+    artist: Rolling Stones
+  - title: Jet Airliner
+    artist: Steve Miller
+  - title: Keep Your Hands to Yourself
+    artist: Georgia Satellites
+  - title: One After 909
+    artist: Beatles
+  - title: Roadhouse Blues
+    artist: The Doors
+  - title: Rock and Roll
+    artist: Led Zeppelin
+  - title: She Came in Through the Bathroom Window
+    artist: Beatles
+  - title: Stuck in the Middle With You
+    artist: Stealers Wheel
+  - title: The Last Time
+    artist: Rolling Stones
+  - title: Turn the Page
+    artist: Bob Seger (Live)
+  - title: Twist and Shout / La Bamba
+    artist: Beatles / Ritchie Valens
+  - title: Whole Lotta Love
+    artist: Led Zeppelin
+  - title: With a Little Help From My Friends
+    artist: Joe Cocker
+  - title: Wonderful Tonight
+    artist: Eric Clapton
+  - title: You Shook Me All Night Long
+    artist: AC/DC
+    youtube: https://youtu.be/McFR3lAw_ck
+  - title: You Wreck Me
+    artist: Tom Petty
+- name: Blues & Soul
+  songs:
+  - title: Colors
+    artist: Black Pumas
+  - title: Hard to Handle
+    artist: Black Crowes
+  - title: Higher & Higher
+    artist: Jackie Wilson
+  - title: I Ain't Drunk
+    artist: Albert Collins
+  - title: I Heard It Through the Grapevine
+    artist: Gladys Knight
+  - title: Lean on Me
+    artist: Bill Withers
+  - title: Messin' With the Kid
+    artist: Buddy Guy
+  - title: Mustang Sally
+    artist: Buddy Guy
+  - title: Pride and Joy
+    artist: Stevie Ray Vaughan
+    youtube: https://youtu.be/FyL4TNYnEZM
+  - title: S.O.B.
+    artist: Nathaniel Rateliff
+- name: Reggae Grooves
+  songs:
+  - title: D'yer Mak'er
+    artist: Led Zeppelin
+  - title: I Can See Clearly Now
+    artist: Johnny Nash
+  - title: I Shot the Sheriff
+    artist: Bob Marley
+  - title: Santeria
+    artist: Sublime
+  - title: So Lonely
+    artist: The Police
+  - title: Stir It Up
+    artist: Bob Marley
+  - title: Take Me Home, Country Roads
+    artist: ''
+    note: our reggae arrangement
+- name: Country & Americana
+  songs:
+  - title: Can't Let Go
+    artist: Robert Plant & Alison Krauss
+  - title: Dead Flowers
+    artist: Rolling Stones
+  - title: Driving My Life Away
+    artist: Eddie Rabbitt
+  - title: Jolene
+    artist: Miley Cyrus
+  - title: Me and Bobby McGee
+    artist: Janis Joplin
+  - title: Tennessee Whiskey
+    artist: Chris Stapleton
+  - title: The Story
+    artist: Brandi Carlile
+    youtube: https://youtu.be/aLKjOCqqzoM
+  - title: Up on Cripple Creek
+    artist: The Band
+- name: "'90s & Alternative"
+  songs:
+  - title: Creep
+    artist: Radiohead
+    youtube: https://youtu.be/fUhOb3bbIzo
+  - title: Go Your Own Way
+    artist: Cranberries
+  - title: Just a Girl
+    artist: No Doubt
+    youtube: https://youtu.be/EL2TA7bYHJQ
+  - title: Mr. Jones
+    artist: Counting Crows
+  - title: No Rain
+    artist: Blind Melon
+  - title: The Middle
+    artist: Jimmy Eat World
+  - title: The Way
+    artist: Fastball
+  - title: What's Up
+    artist: 4 Non Blondes
+  - title: You Oughta Know
+    artist: Alanis Morissette
+  - title: Zombie
+    artist: The Cranberries
+- name: "'80s New Wave"
+  songs:
+  - title: I Melt With You
+    artist: Modern English
+  - title: I'm Gonna Be (500 Miles)
+    artist: The Proclaimers
+  - title: Our Lips Are Sealed
+    artist: The Go-Go's
+  - title: Who Can It Be Now
+    artist: Men at Work
+- name: Modern Pop, Mashups & Covers
+  songs:
+  - title: Bad Romance
+    artist: Lady Gaga
+  - title: Blank Space / Stand By Me (mashup)
+    artist: Imagine Dragons
+  - title: Flowers / Killing Me Softly (mashup)
+    artist: Miley Cyrus / Roberta Flack
+  - title: Like a Prayer
+    artist: Grace Potter (iTunes Session)
+  - title: Rolling in the Deep
+    artist: Adele
+  - title: Sweet Child O' Mine
+    artist: Sheryl Crow
+  - title: Whatever Gets You Through the Night
+    artist: Los Lonely Boys

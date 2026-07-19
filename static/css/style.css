@@ -262,6 +262,52 @@ img { max-width: 100%; display: block; }
 .member-single { max-width: 700px; margin: 0 auto; padding: 2rem 1.25rem; }
 .member-single__photo { border-radius: 6px; margin-bottom: 1rem; max-height: 420px; object-fit: cover; width: 100%; }
 
+/* ---- Song list ---- */
+.song-groups {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem;
+}
+.song-group { margin-top: 2rem; }
+.song-group h2 {
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0.3rem;
+}
+.song-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+.song-list__item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.song-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+.song-list__artist { opacity: 0.85; }
+.song-list__note { font-style: italic; opacity: 0.75; }
+.song-list__yt img {
+  width: 20px;
+  height: 14px;
+  vertical-align: middle;
+  margin-left: 0.3em;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+.song-list__yt:hover img { opacity: 1; }
+.song-list__audio {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 32px;
+  margin-top: 0.4rem;
+}
+
 /* ---- Gigs / shows ---- */
 .gig-list {
   max-width: 800px;

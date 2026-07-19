@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="prose-section">
+  <p>{{ .Site.Data.songlist.intro }}</p>
+</section>
+
+{{ $audioSlugs := slice }}
+{{ $dirResult := try (readDir "static/audio") }}
+{{ with $dirResult }}
+  {{ if .Err }}
+  {{ else }}
+    {{ range .Value }}
+      {{ if and (not .IsDir) (eq (path.Ext .Name) ".mp3") }}
+        {{ $audioSlugs = $audioSlugs | append (path.BaseName .Name) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="song-groups">
+  {{ range .Site.Data.songlist.groups }}
+  <section class="song-group">
+    <h2>{{ .name }}</h2>
+    <ul class="song-list">
+      {{ range .songs }}
+      {{ $slug := anchorize .title }}
+      {{ $hasAudio := in $audioSlugs $slug }}
+      <li class="song-list__item">
+        <div class="song-list__row">
+          <span class="song-list__title">{{ .title }}</span>
+          {{ if .artist }}<span class="song-list__artist"> — {{ .artist }}</span>{{ end }}
+          {{ if .note }}<span class="song-list__note"> ({{ .note }})</span>{{ end }}
+          {{ if .youtube }}
+          <a href="{{ .youtube }}" class="song-list__yt" aria-label="Watch {{ .title }} on YouTube" target="_blank" rel="noopener">
+            <img src="/images/youtube-icon.svg" alt="YouTube">
+          </a>
+          {{ end }}
+        </div>
+        {{ if $hasAudio }}
+        <audio class="song-list__audio" controls preload="none" src="/audio/{{ $slug }}.mp3"></audio>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}
