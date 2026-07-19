@@ -6,4 +6,4 @@ address: "345 N Milwaukee Ave, Libertyville, IL"
 venue_link: "https://www.mickeyfinnsbrewery.com/"
 ---
 
-Come see us live at Mickey Finn's in Libertyville — good times guaranteed.
+Come see us live at Mickey Finn's in Libertyville. Good times guaranteed.

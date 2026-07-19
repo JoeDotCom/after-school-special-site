@@ -25,7 +25,7 @@
     <p class="hall-pass__line">
       <strong>Where:</strong>
       {{ if $show.Params.venue_link }}<a href="{{ $show.Params.venue_link }}">{{ $show.Params.venue }}</a>{{ else }}{{ $show.Params.venue }}{{ end }}
-      {{ with $show.Params.address }}&mdash; {{ . }}{{ end }}
+      {{ with $show.Params.address }}&middot; {{ . }}{{ end }}
     </p>
   </div>
   {{ end }}
@@ -111,7 +111,7 @@
     btn.type = 'button';
     btn.className = 'js-play-track top-songs__play';
     btn.dataset.src = t.url;
-    btn.dataset.title = t.title + (t.subtitle ? ' — ' + t.subtitle : '');
+    btn.dataset.title = t.title + (t.subtitle ? ' · ' + t.subtitle : '');
     btn.setAttribute('aria-label', 'Play ' + t.title);
     btn.innerHTML = '&#9654;';
 

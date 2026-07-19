@@ -6,4 +6,4 @@ address: "345 N Milwaukee Ave, Libertyville, IL"
 venue_link: "https://www.mickeyfinnsbrewery.com/"
 ---
 
-We're playing Mickey Finn's in downtown Libertyville — mark your calendars!
+We're playing Mickey Finn's in downtown Libertyville. Mark your calendars!

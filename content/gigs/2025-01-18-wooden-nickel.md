@@ -7,5 +7,5 @@ address: "444 Lake View Avenue, Highwood, IL"
 venue_link: "https://www.facebook.com/p/Live-from-the-Nickel-61566451287954/"
 ---
 
-We're returning to the legendary Wooden Nickel in Highwood — hope to see you
+We're returning to the legendary Wooden Nickel in Highwood. Hope to see you
 there!

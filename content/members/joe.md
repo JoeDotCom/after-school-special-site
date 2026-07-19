@@ -13,7 +13,7 @@ every show so everyone can relive their finest guitar faces in high
 definition. Legend holds that he once EQ'd a room so precisely that a dog
 three blocks away stopped barking mid-howl.
 
-He'll pick up a tambourine or shaker when nobody's looking — and by
+He'll pick up a tambourine or shaker when nobody's looking, and by
 "nobody's looking," we mean everybody is looking and he doesn't care. Rumor
 has it his mixing board is haunted by the ghost of a 1987 karaoke machine,
 which explains a lot.

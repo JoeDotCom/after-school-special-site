@@ -8,4 +8,4 @@ venue_link: "https://www.mickeyfinnsbrewery.com/"
 ---
 
 We're so excited to be playing Mickey Finn's Brewery this Saturday! Two sets
-of oldies and new ones too — don't miss it.
+of oldies and new ones too, so don't miss it.

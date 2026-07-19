@@ -45,7 +45,7 @@
       <li class="song-list__item">
         <div class="song-list__row">
           <span class="song-list__title">{{ .title }}</span>
-          {{ if .artist }}<span class="song-list__artist"> — {{ .artist }}</span>{{ end }}
+          {{ if .artist }}<span class="song-list__artist"> &middot; {{ .artist }}</span>{{ end }}
           {{ if .note }}<span class="song-list__note"> ({{ .note }})</span>{{ end }}
           {{ if .youtube }}
           <a href="{{ .youtube }}" class="song-list__yt" aria-label="Watch {{ .title }} on YouTube" target="_blank" rel="noopener">
@@ -53,10 +53,10 @@
           </a>
           {{ end }}
           {{ if $hasAudio }}
-          <button type="button" class="song-list__play js-play-track" data-src="/audio/{{ $slug }}.mp3" data-title="{{ .title }}{{ if .artist }} — {{ .artist }}{{ end }}" aria-label="Play recording of {{ .title }}" title="Play recording">&#9654;</button>
+          <button type="button" class="song-list__play js-play-track" data-src="/audio/{{ $slug }}.mp3" data-title="{{ .title }}{{ if .artist }} &middot; {{ .artist }}{{ end }}" aria-label="Play recording of {{ .title }}" title="Play recording">&#9654;</button>
           {{ end }}
           {{ range $r := $recordings }}
-          <button type="button" class="song-list__play js-play-track" data-src="{{ $r.url }}" data-title="{{ $songTitle }} — Live at {{ $r.gig }}" aria-label="Play recording of {{ $songTitle }} from {{ $r.gig }}" title="Live at {{ $r.gig }} &middot; {{ (time.AsTime $r.date).Format "Jan 2, 2006" }}">&#9654;</button>
+          <button type="button" class="song-list__play js-play-track" data-src="{{ $r.url }}" data-title="{{ $songTitle }} &middot; Live at {{ $r.gig }}" aria-label="Play recording of {{ $songTitle }} from {{ $r.gig }}" title="Live at {{ $r.gig }} &middot; {{ (time.AsTime $r.date).Format "Jan 2, 2006" }}">&#9654;</button>
           {{ end }}
         </div>
       </li>
