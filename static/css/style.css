@@ -335,6 +335,7 @@ img { max-width: 100%; display: block; }
   transition: opacity 0.15s ease;
 }
 .prose-section li a:hover img { opacity: 1; }
+.page-photo { width: 100%; height: auto; border-radius: 6px; margin-top: 1.5rem; display: block; }
 
 /* ---- Members ---- */
 .member-grid {

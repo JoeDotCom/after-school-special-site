@@ -6,11 +6,15 @@
   {{ .Content }}
 
   {{ if .Params.photos }}
-  <div class="photo-grid">
-    {{ range .Params.photos }}
-    <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+    {{ if eq (len .Params.photos) 1 }}
+    <img src="{{ index .Params.photos 0 | relURL }}" alt="{{ .Title }} photo" class="page-photo" loading="lazy">
+    {{ else }}
+    <div class="photo-grid">
+      {{ range .Params.photos }}
+      <img src="{{ . | relURL }}" alt="{{ $.Title }} photo" loading="lazy">
+      {{ end }}
+    </div>
     {{ end }}
-  </div>
   {{ end }}
 
   {{ if .Params.email }}
