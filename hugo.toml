@@ -1,4 +1,4 @@
-baseURL = "https://www.afterschoolspecial.band/"
+baseURL = "https://afterschoolspecial.band/"
 languageCode = "en-us"
 title = "After School Special"
 buildFuture = true

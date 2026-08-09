@@ -17,3 +17,8 @@ Right around the time Jeremy joined the band we started looking to play out in
 the real world. Our first bar gig was at Mickey Finn's in Libertyville. I
 credit Brian Grano for taking a chance on us. It was the push we needed to get
 into regular gigs.
+
+We love playing out. Bring us to your venue next! We play bars, breweries,
+private parties, and fundraisers throughout Lake County and the northwest
+Chicago suburbs, including Libertyville, Buffalo Grove, Arlington Heights,
+Mundelein, and Highland Park.
