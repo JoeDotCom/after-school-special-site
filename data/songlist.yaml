@@ -129,9 +129,6 @@ groups:
     artist: The Band
 - name: "'90s & Alternative"
   songs:
-  - title: Creep
-    artist: Radiohead
-    youtube: https://youtu.be/fUhOb3bbIzo
   - title: Go Your Own Way
     artist: Cranberries
   - title: Interstate Love Song
