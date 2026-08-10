@@ -72,3 +72,9 @@
   songs:
   - title: One After 909
     file: One After 909 20250501 Practice.mp3
+- slug: 2025-05-12-pint-for-kim
+  gig: A Pint For Kim
+  date: '2025-05-12'
+  songs:
+  - title: She Came in Through the Bathroom Window
+    file: She Came In Through The Bathroom Window 20250512 A Pint For Kim.mp3
