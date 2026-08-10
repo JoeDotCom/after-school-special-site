@@ -31,21 +31,28 @@
   </div>
 </section>
 
-<script type="application/json" id="video-catalog-data">{{ $videos | jsonify }}</script>
+<script type="application/json" id="video-catalog-data">{{ $videos | jsonify | safeJS }}</script>
 <script>
 (function () {
   var frame = document.getElementById('video-player-frame');
-  var dataEl = document.getElementById('video-catalog-data');
-  if (!frame || !dataEl) return;
-  var videos = JSON.parse(dataEl.textContent || '[]');
-  if (!videos.length) return;
+  if (!frame) return;
 
-  var startIndex = Math.floor(Math.random() * videos.length);
-  var chosen = videos[startIndex];
-  var rest = videos.filter(function (v, i) { return i !== startIndex; }).map(function (v) { return v.id; });
-  var src = 'https://www.youtube-nocookie.com/embed/' + chosen.id;
-  if (rest.length) src += '?playlist=' + rest.join(',');
-  frame.src = src;
+  var dataEl = document.getElementById('video-catalog-data');
+  var videos = [];
+  try {
+    videos = JSON.parse((dataEl && dataEl.textContent) || '[]');
+  } catch (e) {
+    videos = [];
+  }
+
+  if (videos.length) {
+    var startIndex = Math.floor(Math.random() * videos.length);
+    var chosen = videos[startIndex];
+    var rest = videos.filter(function (v, i) { return i !== startIndex; }).map(function (v) { return v.id; });
+    var src = 'https://www.youtube-nocookie.com/embed/' + chosen.id;
+    if (rest.length) src += '?playlist=' + rest.join(',');
+    frame.src = src;
+  }
 
   document.querySelectorAll('.video-grid__item').forEach(function (btn) {
     btn.addEventListener('click', function () {
