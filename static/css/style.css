@@ -596,7 +596,16 @@ body:has(.now-playing:not([hidden])) {
   transition: transform 0.2s ease;
 }
 .video-grid__item:hover img { transform: scale(1.04); }
-.video-grid__title { display: block; margin-top: 0.4rem; font-size: 0.9rem; }
+.video-grid__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  min-height: calc(1.3em * 2);
+}
 
 /* ---- Lightbox ---- */
 .lightbox {
