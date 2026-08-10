@@ -6,8 +6,6 @@ groups:
     artist: Rolling Stones
   - title: Back in the U.S.S.R.
     artist: Beatles
-  - title: Because the Night
-    artist: Patti Smith
   - title: Bertha
     artist: Grateful Dead
   - title: Burning Love
@@ -162,7 +160,7 @@ groups:
     artist: The Go-Go's
   - title: Who Can It Be Now
     artist: Men at Work
-- name: Modern Pop, Mashups & Covers
+- name: Modern Pop & Mash Ups
   songs:
   - title: Bad Romance
     artist: Lady Gaga
