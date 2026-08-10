@@ -22,6 +22,7 @@
   <meta name="description" content="{{ $desc }}">
   <link rel="canonical" href="{{ .Permalink }}">
   <meta name="theme-color" content="#1a3230">
+  {{ if .Params.noindex }}<meta name="robots" content="noindex">{{ end }}
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">

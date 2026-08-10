@@ -1,0 +1,108 @@
+{{ define "main" }}
+<section class="page-header">
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="prose-section">
+  {{ .Content }}
+</section>
+
+{{ $apiKey := os.Getenv "HUGO_YOUTUBE_API_KEY" }}
+{{ $videos := slice }}
+{{ $uploadsPlaylist := "" }}
+{{ $fetchFailed := false }}
+
+{{ if $apiKey }}
+  {{ $channelURL := printf "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=AfterSchoolSpecialBand&key=%s" $apiKey }}
+  {{ $channelResult := try (resources.GetRemote $channelURL) }}
+  {{ with $channelResult.Err }}
+    {{ $fetchFailed = true }}
+  {{ else with $channelResult.Value }}
+    {{ $channelData := . | transform.Unmarshal }}
+    {{ range $channelData.items }}
+      {{ $uploadsPlaylist = .contentDetails.relatedPlaylists.uploads }}
+    {{ end }}
+  {{ end }}
+
+  {{ if and $uploadsPlaylist (not $fetchFailed) }}
+    {{ $playlistURL := printf "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s" $uploadsPlaylist $apiKey }}
+    {{ $playlistResult := try (resources.GetRemote $playlistURL) }}
+    {{ with $playlistResult.Err }}
+      {{ $fetchFailed = true }}
+    {{ else with $playlistResult.Value }}
+      {{ $playlistData := . | transform.Unmarshal }}
+      {{ range $playlistData.items }}
+        {{ if and (ne .snippet.title "Private video") (ne .snippet.title "Deleted video") }}
+          {{ $thumb := "" }}
+          {{ with .snippet.thumbnails.high }}{{ $thumb = .url }}{{ else }}{{ with .snippet.thumbnails.medium }}{{ $thumb = .url }}{{ end }}{{ end }}
+          {{ $videos = $videos | append (dict
+            "id" .snippet.resourceId.videoId
+            "title" .snippet.title
+            "thumb" $thumb
+          ) }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ else if not $fetchFailed }}
+    {{ $fetchFailed = true }}
+  {{ end }}
+{{ end }}
+
+{{ if $videos }}
+<section class="video-catalog">
+  <div class="video-player">
+    <div class="video-player__frame">
+      <iframe id="video-player-frame"
+        src="https://www.youtube-nocookie.com/embed/videoseries?list={{ $uploadsPlaylist }}&index=0"
+        title="After School Special video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="video-grid">
+    {{ range $videos }}
+    <button type="button" class="video-grid__item" data-video-id="{{ .id }}">
+      {{ if .thumb }}<img src="{{ .thumb }}" alt="{{ .title }}" loading="lazy">{{ end }}
+      <span class="video-grid__title">{{ .title }}</span>
+    </button>
+    {{ end }}
+  </div>
+</section>
+
+<script>
+(function () {
+  var frame = document.getElementById('video-player-frame');
+  if (!frame) return;
+  var listId = {{ $uploadsPlaylist | jsonify }};
+  var count = {{ len $videos }};
+  if (listId && count > 1) {
+    var randomIndex = Math.floor(Math.random() * count);
+    frame.src = 'https://www.youtube-nocookie.com/embed/videoseries?list=' + listId + '&index=' + randomIndex;
+  }
+  document.querySelectorAll('.video-grid__item').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-video-id');
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+</script>
+
+{{ else }}
+<section class="prose-section">
+  {{ if not $apiKey }}
+  <p>The video catalog isn't connected yet. Once the YouTube API key is set
+  up, videos from our channel will appear here automatically.</p>
+  {{ else if $fetchFailed }}
+  <p>Couldn't load the video catalog right now. In the meantime, check out
+  our videos directly on
+  <a href="https://www.youtube.com/@AfterSchoolSpecialBand">YouTube</a>.</p>
+  {{ else }}
+  <p>No videos found yet. Check back soon, or see our channel directly on
+  <a href="https://www.youtube.com/@AfterSchoolSpecialBand">YouTube</a>.</p>
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}
