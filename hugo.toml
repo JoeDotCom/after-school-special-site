@@ -3,10 +3,6 @@ languageCode = "en-us"
 title = "After School Special"
 buildFuture = true
 
-[security]
-  [security.http]
-    urls = ['^https://www\.googleapis\.com/']
-
 [permalinks]
   [permalinks.page]
     gigs = "/shows/:slug/"
