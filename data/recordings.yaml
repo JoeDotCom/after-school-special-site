@@ -58,3 +58,21 @@
     file: 2026-05-06 Jimmy Ds - 28 Whole Lotta Love.mp3
   - title: S.O.B.
     file: 2026-05-06 Jimmy Ds - 29 S.O.B.mp3
+- slug: 2025-01-18-wooden-nickel
+  gig: The Wooden Nickel
+  date: '2025-01-18'
+  songs:
+  - title: Honky Tonk Women
+    file: Honky Tonk 20250119 Live at Nickel Jan 19th 2025 live.mp3
+- slug: 2025-01-12-practice
+  gig: Practice
+  date: '2025-01-12'
+  songs:
+  - title: Funk 49
+    file: Funk 49 20250112 Practice.mp3
+- slug: 2025-05-01-practice
+  gig: Practice
+  date: '2025-05-01'
+  songs:
+  - title: One After 909
+    file: One After 909 20250501 Practice.mp3
