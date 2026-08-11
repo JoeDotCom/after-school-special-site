@@ -49,3 +49,8 @@ buildFuture = true
   name = "Contact Us"
   url = "/contact/"
   weight = 7
+
+[[menu.main]]
+  name = "Promo Kit"
+  url = "/promo-kit/"
+  weight = 8
