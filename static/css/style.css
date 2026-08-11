@@ -565,6 +565,39 @@ body:has(.now-playing:not([hidden])) {
 }
 .photo-grid__item:hover img { transform: scale(1.04); }
 
+/* ---- Promo Kit ---- */
+.promo-section {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1.25rem;
+}
+.promo-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.promo-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--paper-dark);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+.promo-logo img { width: 180px; height: 180px; object-fit: contain; }
+.promo-asset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.promo-asset img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--paper-dark);
+}
+
 /* ---- Videos ---- */
 .video-catalog { max-width: 900px; margin: 1rem auto 3rem; padding: 0 1.25rem; }
 .video-player__frame {

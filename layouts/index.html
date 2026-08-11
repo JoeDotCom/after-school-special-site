@@ -178,6 +178,7 @@
   <h2 class="prose-section__heading">About Us</h2>
   {{ .Content }}
   {{ with .Site.GetPage "/members" }}<a class="home-cta" href="{{ .RelPermalink }}">Meet the Band &rarr;</a>{{ end }}
+  <br>
   {{ with .Site.GetPage "/contact" }}<a class="home-cta" href="{{ .RelPermalink }}">Book Us &rarr;</a>{{ end }}
 </section>
 
