@@ -38,8 +38,6 @@
     file: 2026-05-06 Jimmy Ds - 19 Sweet Child of Mine.mp3
   - title: You Wreck Me
     file: 2026-05-06 Jimmy Ds - 20 You Wreck Me.mp3
-  - title: Ain't Too Proud to Beg
-    file: 2026-05-06 Jimmy Ds - 21 Aint Too Proud to Beg.mp3
   - title: You Oughta Know
     file: 2026-05-06 Jimmy Ds - 22 You Oughta Know.mp3
   - title: I Ain't Drunk
@@ -52,14 +50,14 @@
     file: 2026-05-06 Jimmy Ds - 27 Im Gonna Be 500 miles .mp3
   - title: Whole Lotta Love
     file: 2026-05-06 Jimmy Ds - 28 Whole Lotta Love.mp3
-  - title: S.O.B.
-    file: 2026-05-06 Jimmy Ds - 29 S.O.B.mp3
 - slug: 2025-01-18-wooden-nickel
   gig: The Wooden Nickel
   date: '2025-01-18'
   songs:
   - title: Honky Tonk Women
     file: Honky Tonk 20250119 Live at Nickel Jan 19th 2025 live.mp3
+  - title: Messin' With the Kid
+    file: Messin With the Kid 20250118 Live at Wooden Nickel.mp3
 - slug: 2025-01-12-practice
   gig: Practice
   date: '2025-01-12'
@@ -78,3 +76,39 @@
   songs:
   - title: She Came in Through the Bathroom Window
     file: She Came In Through The Bathroom Window 20250512 A Pint For Kim.mp3
+  - title: Can't Let Go
+    file: Cant Let Go 20250512 A Pint For Kim.mp3
+- slug: 2026-01-24-jimmys-ds-district
+  gig: Jimmy D's District
+  date: '2026-01-24'
+  songs:
+  - title: Colors
+    file: Colors 20260124 Live at Jimmy Ds District.mp3
+  - title: Me and Bobby McGee
+    file: Me and Bobby McGee 20260124 Live at Jimmy Ds District.mp3
+  - title: S.O.B.
+    file: SOB 20260124 Live at Jimmy Ds District.mp3
+- slug: 2024-05-29-prairie-house
+  gig: Prairie House
+  date: '2024-05-29'
+  songs:
+  - title: I Can See Clearly Now
+    file: I Can See Clearly Now 20240529 Live at Prairie House.mp3
+- slug: 2025-11-17-practice
+  gig: Practice
+  date: '2025-11-17'
+  songs:
+  - title: Take Me Home, Country Roads
+    file: Take Me Home Country Roads 20251117 Practice.mp3
+- slug: 2024-07-04-party-at-dons
+  gig: Party at Don's
+  date: '2024-07-04'
+  songs:
+  - title: Tennessee Whiskey
+    file: Tennessee Whiskey 20240704 Party at Dons.mp3
+- slug: 2024-04-27-wooden-nickel
+  gig: The Wooden Nickel
+  date: '2024-04-27'
+  songs:
+  - title: Burning Love
+    file: Burning Love 20240427 Live at Wooden Nickel.mp3
