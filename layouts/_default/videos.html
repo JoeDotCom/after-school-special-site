@@ -19,6 +19,7 @@
         allowfullscreen
         loading="lazy"></iframe>
     </div>
+    <p id="video-player-caption" class="video-player__caption">Now playing: {{ (index $videos 0).title }}</p>
   </div>
 
   <div class="video-grid">
@@ -35,6 +36,7 @@
 <script>
 (function () {
   var frame = document.getElementById('video-player-frame');
+  var caption = document.getElementById('video-player-caption');
   if (!frame) return;
 
   var dataEl = document.getElementById('video-catalog-data');
@@ -52,12 +54,15 @@
     var src = 'https://www.youtube-nocookie.com/embed/' + chosen.id;
     if (rest.length) src += '?playlist=' + rest.join(',');
     frame.src = src;
+    if (caption) caption.textContent = 'Now playing: ' + chosen.title;
   }
 
   document.querySelectorAll('.video-grid__item').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var id = btn.getAttribute('data-video-id');
+      var title = btn.querySelector('.video-grid__title');
       frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      if (caption && title) caption.textContent = 'Now playing: ' + title.textContent;
       frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
