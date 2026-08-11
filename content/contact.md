@@ -4,7 +4,7 @@ description: "Contact After School Special to book a private party, fundraiser, 
 photos: ["/images/contact-live-show.jpg"]
 ---
 
-For booking inquiries, [email Don at dcarmich61@gmail.com](mailto:dcarmich61@gmail.com).
+For booking inquiries, [email us at bookafterschoolspecial@gmail.com](mailto:bookafterschoolspecial@gmail.com).
 You can also reach us on our socials.
 
 [Facebook](https://www.facebook.com/afterschoolspecial101) &middot;

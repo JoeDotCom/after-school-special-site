@@ -6,3 +6,5 @@ description: "Logos, stage plot, and promo materials for venues and press bookin
 
 Logos, our stage plot, and a printable promo poster — everything a venue or
 sound engineer needs to book us or set up for a show.
+
+Booking: [bookafterschoolspecial@gmail.com](mailto:bookafterschoolspecial@gmail.com)
