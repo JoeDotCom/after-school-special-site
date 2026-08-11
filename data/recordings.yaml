@@ -112,3 +112,9 @@
   songs:
   - title: Burning Love
     file: Burning Love 20240427 Live at Wooden Nickel.mp3
+- slug: 2024-07-24-practice
+  gig: Practice
+  date: '2024-07-24'
+  songs:
+  - title: Bertha
+    file: Bertha 20240724 Practice.mp3
