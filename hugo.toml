@@ -41,6 +41,11 @@ buildFuture = true
   weight = 5
 
 [[menu.main]]
+  name = "Videos"
+  url = "/videos/"
+  weight = 6
+
+[[menu.main]]
   name = "Contact Us"
   url = "/contact/"
   weight = 7

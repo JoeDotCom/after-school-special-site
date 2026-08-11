@@ -239,6 +239,13 @@ img { max-width: 100%; display: block; }
 }
 .home-cta:hover { text-decoration: none; opacity: 0.8; }
 
+/* ---- See Us (homepage random video) ---- */
+.see-us {
+  max-width: 800px;
+  margin: 2rem auto 0;
+  padding: 0 1.25rem;
+}
+
 /* ---- Hear Us (homepage random tracks) ---- */
 .top-songs {
   max-width: 800px;

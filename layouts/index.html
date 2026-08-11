@@ -38,6 +38,42 @@
 </div>
 {{ end }}
 
+{{ $homeVideos := .Site.Data.videos }}
+{{ if $homeVideos }}
+<section class="see-us">
+  <h2 class="top-songs__heading">See Us</h2>
+  <div class="video-player__frame">
+    <iframe id="home-video-frame"
+      src="https://www.youtube-nocookie.com/embed/{{ (index $homeVideos 0).id }}"
+      title="After School Special video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  {{ with .Site.GetPage "/videos" }}
+  <a class="home-cta" href="{{ .RelPermalink }}">See More &rarr;</a>
+  {{ end }}
+</section>
+<script type="application/json" id="home-video-data">{{ $homeVideos | jsonify | safeJS }}</script>
+<script>
+(function () {
+  var frame = document.getElementById('home-video-frame');
+  if (!frame) return;
+  var dataEl = document.getElementById('home-video-data');
+  var videos = [];
+  try {
+    videos = JSON.parse((dataEl && dataEl.textContent) || '[]');
+  } catch (e) {
+    videos = [];
+  }
+  if (videos.length) {
+    var idx = Math.floor(Math.random() * videos.length);
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + videos[idx].id;
+  }
+})();
+</script>
+{{ end }}
+
 {{ $audioSlugs := slice }}
 {{ $dirResult := try (readDir "static/audio") }}
 {{ with $dirResult }}
