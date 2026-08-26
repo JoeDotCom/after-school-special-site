@@ -1,4 +1,3 @@
-{{/* Trigger rebuild to refresh upcoming/past show filtering */}}
 {{ define "main" }}
 <section class="page-header">
   <h1>{{ .Title }}</h1>
@@ -7,17 +6,14 @@
   {{ .Content }}
 </section>
 
-{{ $upcoming := where .Pages "Date" ">=" now }}
-{{ $upcoming = $upcoming.ByDate }}
-{{ $past := where .Pages "Date" "<" now }}
-{{ $past = $past.ByDate.Reverse }}
-{{ $ordered := slice }}
-{{ range $upcoming }}{{ $ordered = $ordered | append . }}{{ end }}
-{{ range $past }}{{ $ordered = $ordered | append . }}{{ end }}
-
-<div class="gig-list">
-  {{ range $ordered }}
-  <article class="gig-card{{ if .Date.Before now }} gig-card--past{{ end }}">
+{{/*
+  Upcoming vs. past is decided in the browser (see script below), using the
+  visitor's own clock, not Hugo's build-time clock. That way the list stays
+  accurate between deploys without needing a rebuild every day.
+*/}}
+<div class="gig-list" id="gig-list">
+  {{ range .Pages.ByDate.Reverse }}
+  <article class="gig-card" data-date="{{ .Date.Format "2006-01-02" }}">
     <div class="gig-card__date">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.time }} &middot; {{ . }}{{ end }}</div>
     <div class="gig-card__body">
       <h2>
@@ -30,4 +26,30 @@
   </article>
   {{ end }}
 </div>
+<script>
+(function () {
+  var list = document.getElementById('gig-list');
+  if (!list) return;
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var now = new Date();
+  var today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+
+  var cards = Array.prototype.slice.call(list.querySelectorAll('.gig-card'));
+  var upcoming = [];
+  var past = [];
+  cards.forEach(function (card) {
+    var d = card.dataset.date;
+    if (d >= today) {
+      card.classList.remove('gig-card--past');
+      upcoming.push(card);
+    } else {
+      card.classList.add('gig-card--past');
+      past.push(card);
+    }
+  });
+  upcoming.sort(function (a, b) { return a.dataset.date < b.dataset.date ? -1 : a.dataset.date > b.dataset.date ? 1 : 0; });
+  past.sort(function (a, b) { return a.dataset.date > b.dataset.date ? -1 : a.dataset.date < b.dataset.date ? 1 : 0; });
+  upcoming.concat(past).forEach(function (card) { list.appendChild(card); });
+})();
+</script>
 {{ end }}

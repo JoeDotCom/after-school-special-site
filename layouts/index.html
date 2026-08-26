@@ -6,29 +6,22 @@
   </div>
 </section>
 
+{{/*
+  Which shows count as "upcoming" is decided in the browser (see script
+  below), using the visitor's own clock, not Hugo's build-time clock. That
+  way this stays accurate between deploys without needing a rebuild every day.
+*/}}
 {{ $gigs := where .Site.RegularPages "Section" "gigs" }}
-{{ $cutoff := now.AddDate 0 0 -3 }}
-{{ $upcoming := where $gigs "Date" ">=" $cutoff }}
-{{ $upcoming = $upcoming.ByDate | first 3 }}
-{{ if $upcoming }}
-<div class="hall-pass">
-  {{ range $i, $show := $upcoming }}
-  <div class="hall-pass__card{{ if $show.Date.Before now }} hall-pass__card--past{{ end }}">
-    <p class="hall-pass__eyebrow">
-      {{ if $show.Date.Before now }}We just played:
-      {{ else if eq $i 0 }}Come see our next show!
-      {{ else }}Also playing{{ end }}
-    </p>
-    <p class="hall-pass__line">
-      <strong>When:</strong> {{ $show.Date.Format "Jan 2, 2006" }}{{ with $show.Params.time }} &middot; {{ . }}{{ end }}
-    </p>
-    <p class="hall-pass__line">
-      <strong>Where:</strong>
-      {{ if $show.Params.venue_link }}<a href="{{ $show.Params.venue_link }}">{{ $show.Params.venue }}</a>{{ else }}{{ $show.Params.venue }}{{ end }}
-      {{ with $show.Params.address }}&middot; {{ . }}{{ end }}
-    </p>
-  </div>
-  {{ end }}
+{{ $gigsData := slice }}
+{{ range $gigs }}
+  {{ $gigsData = $gigsData | append (dict
+      "date" (.Date.Format "2006-01-02")
+      "time" .Params.time
+      "venue" .Params.venue
+      "venue_link" .Params.venue_link
+      "address" .Params.address) }}
+{{ end }}
+<div class="hall-pass" id="hall-pass" hidden>
   {{ with .Site.GetPage "/gigs" }}
   <a class="hall-pass__card hall-pass__card--cta" href="{{ .RelPermalink }}">
     <p class="hall-pass__eyebrow">See every show</p>
@@ -36,7 +29,78 @@
   </a>
   {{ end }}
 </div>
-{{ end }}
+<script type="application/json" id="hall-pass-data">{{ $gigsData | jsonify | safeJS }}</script>
+<script>
+(function () {
+  var container = document.getElementById('hall-pass');
+  var dataEl = document.getElementById('hall-pass-data');
+  if (!container || !dataEl) return;
+  var gigs = [];
+  try {
+    gigs = JSON.parse(dataEl.textContent || '[]');
+  } catch (e) {
+    gigs = [];
+  }
+
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var now = new Date();
+  var today = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+  var cutoffObj = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 3);
+  var cutoff = cutoffObj.getFullYear() + '-' + pad(cutoffObj.getMonth() + 1) + '-' + pad(cutoffObj.getDate());
+
+  var upcoming = gigs.filter(function (g) { return g.date >= cutoff; });
+  upcoming.sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  upcoming = upcoming.slice(0, 3);
+
+  if (!upcoming.length) return;
+
+  var ctaCard = container.querySelector('.hall-pass__card--cta');
+
+  upcoming.forEach(function (show, i) {
+    var isPast = show.date < today;
+    var card = document.createElement('div');
+    card.className = 'hall-pass__card' + (isPast ? ' hall-pass__card--past' : '');
+
+    var eyebrow = document.createElement('p');
+    eyebrow.className = 'hall-pass__eyebrow';
+    eyebrow.textContent = isPast ? 'We just played:' : (i === 0 ? 'Come see our next show!' : 'Also playing');
+    card.appendChild(eyebrow);
+
+    var whenLine = document.createElement('p');
+    whenLine.className = 'hall-pass__line';
+    var whenStrong = document.createElement('strong');
+    whenStrong.textContent = 'When:';
+    whenLine.appendChild(whenStrong);
+    var dateObj = new Date(show.date + 'T00:00:00');
+    var dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    whenLine.appendChild(document.createTextNode(' ' + dateStr + (show.time ? ' · ' + show.time : '')));
+    card.appendChild(whenLine);
+
+    var whereLine = document.createElement('p');
+    whereLine.className = 'hall-pass__line';
+    var whereStrong = document.createElement('strong');
+    whereStrong.textContent = 'Where:';
+    whereLine.appendChild(whereStrong);
+    whereLine.appendChild(document.createTextNode(' '));
+    if (show.venue_link) {
+      var a = document.createElement('a');
+      a.href = show.venue_link;
+      a.textContent = show.venue;
+      whereLine.appendChild(a);
+    } else {
+      whereLine.appendChild(document.createTextNode(show.venue));
+    }
+    if (show.address) {
+      whereLine.appendChild(document.createTextNode(' · ' + show.address));
+    }
+    card.appendChild(whereLine);
+
+    container.insertBefore(card, ctaCard || null);
+  });
+
+  container.hidden = false;
+})();
+</script>
 
 {{ $homeVideos := .Site.Data.videos }}
 {{ if $homeVideos }}
