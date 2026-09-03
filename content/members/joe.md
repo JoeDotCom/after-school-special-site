@@ -2,6 +2,7 @@
 title: "Joe"
 photo: "/images/joe.jpg"
 instrument: "Sound, Tech & Recording (occasional percussion)"
+joined: 2023
 weight: 60
 ---
 

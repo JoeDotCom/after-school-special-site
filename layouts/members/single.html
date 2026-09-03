@@ -3,8 +3,11 @@
   {{ if .Params.photo }}
   <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" class="member-single__photo" style="object-position: {{ .Params.photo_position | default "center" }};">
   {{ end }}
-  <h1>{{ .Title }}</h1>
-  {{ if .Params.instrument }}<p class="member-card__instrument">{{ .Params.instrument }}</p>{{ end }}
+  <div class="member-single__header">
+    {{ if .Params.joined }}<span class="member-joined">Joined {{ .Params.joined }}</span>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ if .Params.instrument }}<p class="member-card__instrument">{{ .Params.instrument }}</p>{{ end }}
+  </div>
   <div class="prose-section">{{ .Content }}</div>
 </article>
 {{ end }}

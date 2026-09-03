@@ -370,7 +370,7 @@ img { max-width: 100%; display: block; }
 .member-card__photo--placeholder {
   background: repeating-linear-gradient(45deg, var(--line), var(--line) 10px, transparent 10px, transparent 20px);
 }
-.member-card__body { padding: 1rem 1.25rem 1.4rem 0; }
+.member-card__body { position: relative; padding: 1rem 1.25rem 1.4rem 0; }
 @media (max-width: 560px) {
   .member-card { flex-direction: column; }
   .member-card__photo { width: 100%; height: auto; }
@@ -382,8 +382,25 @@ img { max-width: 100%; display: block; }
   margin: 0 0 0.6em;
   font-size: 0.95rem;
 }
+.member-joined {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.25rem;
+  background: var(--paper);
+  color: var(--marker-red);
+  border: 1.5px solid var(--marker-red);
+  border-radius: 999px;
+  padding: 0.15rem 0.75rem;
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
 .member-single { max-width: 700px; margin: 0 auto; padding: 2rem 1.25rem; }
 .member-single__photo { border-radius: 6px; margin-bottom: 1rem; max-height: 420px; object-fit: cover; width: 100%; }
+.member-single__header { position: relative; padding-right: 6.5rem; }
+.member-single__header .member-joined { top: 0.3rem; right: 0; }
 
 /* ---- Song list ---- */
 .song-groups {

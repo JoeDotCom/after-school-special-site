@@ -2,6 +2,7 @@
 title: "Chip Tompson"
 photo: "/images/chip.jpg"
 instrument: "Drums, Vocals"
+joined: 1995
 weight: 30
 ---
 

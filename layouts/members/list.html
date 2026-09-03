@@ -11,6 +11,7 @@
     <div class="member-card__photo member-card__photo--placeholder" aria-hidden="true"></div>
     {{ end }}
     <div class="member-card__body">
+      {{ if .Params.joined }}<span class="member-joined">Joined {{ .Params.joined }}</span>{{ end }}
       <h2>{{ .Title }}</h2>
       {{ if .Params.instrument }}<p class="member-card__instrument">{{ .Params.instrument }}</p>{{ end }}
       {{ .Content }}
