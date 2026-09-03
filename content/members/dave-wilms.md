@@ -2,22 +2,8 @@
 title: "Dave Wilms"
 photo: "/images/dave.jpg"
 photo_position: "center top"
-instrument: "Guitar & bass"
+instrument: "Guitar"
 weight: 20
 ---
 
-Dave Wilms, a seasoned guitarist, began his musical journey in 7th/8th grade.
-His first guitar was a 60's Flat top Gibson Les Paul and Gibson Amp, which he
-acquired for just $100. During the 1970s, he played both bass and guitar, even
-building his own Heathkit Amp and Speaker Cabinet. His musical influences
-include the Beatles, Allman Brothers, Clapton, Stones, and Led Zeppelin.
-
-Dave performed in various bands at IU in Bloomington, Indiana, and his band
-was once offered the opportunity to play warm up at the BlueBird for an
-upstart called Jonny Cougar. However, they opted for a different weekend gig
-that promised more money.
-
-Over the years, Dave has played with Chip and Don as a teacher in the "Faculty
-Band" at Stevenson High School. Now retired, he spends his time selling
-large-scale solar power, sailing, traveling, and working on his house. Music
-remains one of his beloved pastimes, and he continues to enjoy live music.
+Dave got his start at $100, courtesy of his dad, who bought him a 1950s Gibson Les Paul and amp. He switched to bass because bands always needed one, and built his own amp and speaker cabinets from a kit rather than buy them. In college at Indiana University he played to a crowd of thousands at the legendary Dun Meadow and once opened, twice, for a then-unknown "Johnny Cougar." He met Don the summer before joining Stevenson's science department, and the two have been playing together for 39 years. Now retired, Dave works in solar power sales and spends his downtime sailing and traveling.

@@ -1,23 +1,8 @@
 ---
 title: "Don Carmichael"
 photo: "/images/don.jpg"
-instrument: "Acoustic & rhythm guitar, keys, vocals"
+instrument: "Acoustic & Rhythm Guitar, Keys, Vocals"
 weight: 10
 ---
 
-Don Carmichael plays acoustic guitar, rhythm guitar, keyboards, and sings lead
-and backing vocals. He got his start in music purchasing a cheap Epiphone
-guitar his freshman year in college at NIU and learned to play along with
-other enthusiasts on the dorm floor and at parties. At jam sessions he learned
-he could sing and often dabbled with keys when needed.
-
-Don is a founding member of the Faculty Band which started performing in the
-early 1990's for school functions. Don has been playing regularly, performing
-a couple times a year along with his band mates.
-
-Don earned a bachelors in Biology and a Masters in Earth Science. He taught
-Biology, Physics, Earth Science and Environmental Science at Stevenson High
-School from 1985 until his retirement in 2018. He now plays in the band,
-serves on a local school board, golfs, and travels with his wife Mo. Don and
-Mo have two grown children who are out of the nest earning their keep. Among
-his favorite artists are Pink Floyd, Steely Dan, and Supertramp.
+Don's musical career started with piano lessons as a kid and trumpet in his teens, took a detour through competitive diving, then picked back up in college when he bought a $99 guitar mostly to meet people at parties. He taught himself rhythm guitar in a dorm stairwell, started singing when it turned out none of his guitar-playing friends could, and never looked back. He met Dave during his second year teaching at Stevenson High School, and the two have been playing together ever since: 39 years and counting. Don graduated from NIU, taught science at Stevenson from 1985 to 2018 and now in retirement, travels extensively, plays with the band and serves as a board member for the Lake County Regional Office of Education Foundation.
